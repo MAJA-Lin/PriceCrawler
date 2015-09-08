@@ -1,0 +1,252 @@
+<?php
+	include_once "src/LIB_http.php";
+	include_once "src/LIB_parse.php";
+	include_once "book_class.php";
+	include_once "src/data_managing.php";
+
+	/*
+	以下為"每周66折"的網址，目前不包括其他的特價，之後可能會再增加其他特價功能。
+		注意：博客來、三民、金石堂等的網址看起來會變動，可能需要額外的步驟去得到最新的網址
+	The following variables are the addresses of the discount pages.
+	And it seems that the address of books.com.tw, Sanmin and Kingstone could be changed,
+		remember to write a page which can reload / get the latest web address of those discount pages.
+	以下網址依序為：
+	博客來 	www.books.com.tw
+	讀冊	www.taaze.tw
+	三民 	www.sanmin.com.tw
+	金石堂	http://www.kingstone.com.tw/
+	灰熊	https://www.iread.com.tw/
+	*/
+
+	$dis_bookscom = "http://www.books.com.tw/activity/gold66_day/";
+	$dis_taaze = "http://www.taaze.tw/act66.html";
+	$dis_sanmin = "http://activity.sanmin.com.tw/Today66";
+	$dis_king = "http://www.kingstone.com.tw/event/0708_aonsale66/onsale66.asp";
+	$dis_iread = "https://www.iread.com.tw/alldiscount.aspx";
+
+	$ref = "www.google.com.tw";
+
+
+	/*
+	*	Books.com.tw / 博客來
+	*	由於book_name會抓到網址，所以需要更改setAllValue的寫法
+	*
+	*/
+	class books_com extends book_info
+	{
+
+		function setAllValue($data, $tag_array) {
+			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
+			$this->book_price = splitColumn($data, $tag_array['price_b'], $tag_array['price_e']);
+			$this->book_label = splitColumn($data, $tag_array['label_b'], $tag_array['label_e']);
+			$this->book_discount = splitColumn($data, $tag_array['discount_b'], $tag_array['discount_e']);
+
+			$this->book_img = splitColumn($data, $tag_array['img_b'], $tag_array['img_e']);
+			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
+
+			//$this->book_link = splitColumn($this->book_name, $tag_array['link_b'], $tag_array['link_e']);
+
+			$this->cleanValue($tag_array);
+		}
+
+		/*
+		*	Clean the data, only save the necessary data.
+		*/
+		public function cleanValue($tag_array) {
+			for ($i=0; $i<count($this->book_name); $i++){
+				$this->book_link[$i] = dataCatcher($this->book_name[$i], "href=\"", "\">");
+				$this->book_name[$i] = dataCatcher($this->book_name[$i], "\">", "</");
+				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
+				$this->book_label[$i] = dataCatcher($this->book_label[$i], $tag_array['label_b'], $tag_array['label_e']);
+				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
+				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
+				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
+			}
+		}
+	}
+
+	/*
+	*	Taaze
+	*	The value book_date need to be dealed with escape sequence like <br>, \r and \n.
+	*
+	*/
+
+	class taaze extends book_info
+	{
+		function cleanDate($tag_array) {
+
+			$tag = "</span>";
+			$tag1 = "<br>";
+			$tag2 = "<br/>";
+
+			for ($i=0; $i < count($this->book_date); $i++) {
+				if (strlen($this->book_date[$i]) > 15) {
+					$this->book_date[$i] = split_string($this->book_date[$i], $tag, BEFORE, EXCL);
+				}
+				$this->book_date[$i] = str_replace($tag1, "", $this->book_date[$i]);
+				$this->book_date[$i] = str_replace($tag2, "", $this->book_date[$i]);
+				$this->book_date[$i] = preg_replace('/\s+/', '', $this->book_date[$i]);
+			}
+
+		}
+	}
+
+
+	/*
+	*	Sanmin 三民書局
+	*	There is no label price shown on the discount page, so remember to set it to zero.
+	*
+	*/
+
+	class sanmin extends book_info
+	{
+
+	}
+
+	/*
+	*
+	*
+	*/
+
+	class kingstone extends book_info
+	{
+		
+	}
+
+	/*
+	*
+	*
+	*/
+
+	class ierad extends book_info
+	{
+		
+	}
+
+
+
+	/*
+	*	Class defination's over.
+	*		Start parsing.
+	*
+	*
+	*
+	*
+	*/
+
+
+
+	/*
+	*	Parsing Books.com.tw
+	*	爬取/存儲博客來的data
+	*	#Warning : the code of books.com.tw is Big5, remember th transfer is to utf-8
+	*/
+
+	$bookscom = new books_com($dis_bookscom, "", "GET", "");
+	$bookscom->setArray();
+
+	$bookscom_begin = "<div id =\"left\">";
+	$bookscom_end = "<div id=\"left_end\">";
+	$bookscom_tag_array = [
+		"name_b" => "<h1><a href=\"http://www.books.com.tw/products",
+		"name_e" => "</a></h1>",
+		"label_b" => "<h2>定價：",
+		"label_e" => "元</h2>",
+		"price_b" => "<b class=\"price\">",
+		"price_e" => "</b>元",
+		"discount_b" => "元</h2><h2>",
+		"discount_e" => "折",
+		"link_b" => "<a href=\"http://www.books.com.tw/products",
+		"link_e" => "\">",
+		"img_b" => "img src=\"",
+		"img_e" => "/>",
+		"date_b" => "class=\"day\">",
+		"date_e" => "</div>",
+	];
+
+	$bookscom_result = $bookscom->pageParsing();
+	$temp = dataCatcher($bookscom_result['FILE'], $bookscom_begin, $bookscom_end);
+	$temp = iconv("Big5", "utf-8", $temp);
+	$bookscom->setAllValue($temp, $bookscom_tag_array);
+	//var_dump($bookscom);
+
+
+	/*
+	*	Parsing Taaze
+	*	讀冊
+	*
+	*/
+
+	//$taazecom = new book_info($dis_taaze, "", "GET", "");
+	$taazecom = new taaze($dis_taaze, "", "GET", "");
+	$taazecom->setArray();
+
+	$taazecom_begin = "<!-- 循環當週55折預告start -->";
+	$taazecom_end = "<!-- 循環當週66折預告end -->";
+	$taazecom_tag_array = [
+		"name_b" => "class=\"text\"><span class=\"txt-b\">",
+		"name_e" => "</span></TD>",
+		"price_b" => "折<span class=\"66-pink-s\">",
+		"price_e" => "</span>元",
+		"label_b" => "class=\"text\">定價：",
+		"label_e" => "元</TD>",
+		"discount_b" => "優惠價：<span class=\"66-pink-s\">",
+		"discount_e" => "</span>折",
+		"link_b" => "\"#CCCCCC\"><a href=\"",
+		"link_e" => "\" target",
+		"img_b" => "blank\"><img src",
+		"img_e" => "width=\"90\"",
+		"date_b" => "<span class=\"date\">",
+		"date_e" => "</span></td>",
+	];
+
+	$taazecom_result = $taazecom->pageParsing();
+	$temp = dataCatcher($taazecom_result['FILE'], $taazecom_begin, $taazecom_end);
+	$taazecom->setAllValue($temp, $taazecom_tag_array);
+	$taazecom->cleanDate($taazecom_tag_array);
+	var_dump($taazecom);
+
+
+	/*
+	*	Sanmin
+	*	三民書局
+	*	#Notice : book_name is like books.com.tw --- conbined with web address
+	*		And the img file seems to be missed on the page. Just give it up right now,
+	*		maybe add a new function to get the img address later.
+	*
+	*/
+
+	$sanmincom = new sanmin($dis_sanmin, "", "GET", "");
+	$sanmincom->setArray();
+
+	$sanmincom_begin = "<div class=\"ActivityBody\" style=\"\">";
+	$sanmincom_end = "<!--end left-->";
+	$sanmincom_tag_array = [
+		"name_b" => "<tr><td><a href=\"http://www.m.sanmin.com.tw/Product/Index",
+		"name_e" => "</a></td>",
+		"price_b" => "66折優惠價：<span>",
+		"price_e" => "</span> 元",
+		"label_b" => "",
+		"label_e" => "",
+		"discount_b" => "class=\"gray\" >",
+		"discount_e" => "折優惠價：",
+		"link_b" => "<tr><td><a href=\"",
+		"link_e" => "\">",
+		"img_b" => "",
+		"img_e" => "",
+		"date_b" => "",
+		"date_e" => "",
+	];
+
+	$sanmincom_result = $sanmincom->pageParsing();
+	$temp = dataCatcher($sanmincom_result['FILE'], $sanmincom_begin, $sanmincom_end);
+	echo xmpTag($temp);
+	//$temp = xmpTag($temp);
+	//print_r($temp);
+	//$sanmincom->setAllValue($temp, $sanmincom_tag_array);
+	//var_dump($sanmincom->book_date);
+	//$sanmincom->cleanDate($sanmincom_tag_array);
+	//var_dump($sanmincom);
+
+
+?>
