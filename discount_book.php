@@ -101,6 +101,33 @@
 	class sanmin extends book_info
 	{
 
+		public $discount = 0.66;
+
+		function setAllValue($data, $tag_array) {
+			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
+			$this->book_price = splitColumn($data, $tag_array['price_b'], $tag_array['price_e']);
+			$this->book_discount = splitColumn($data, $tag_array['discount_b'], $tag_array['discount_e']);
+			$this->book_link = splitColumn($data, $tag_array['link_b'], $tag_array['link_e']);
+			$this->book_img = splitColumn($data, $tag_array['img_b'], $tag_array['img_e']);
+			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
+
+			$this->cleanValue($tag_array);
+			for ($i=0; $i<count($this->book_name); $i++){
+				$this->book_label[$i] = ceil($this->book_price[$i] / $this->discount);
+			}
+		}
+
+		function cleanValue($tag_array) {
+
+			for ($i=0; $i<count($this->book_name); $i++) {
+				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
+				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
+				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
+				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
+				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
+				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
+			}
+		}
 	}
 
 	/*
@@ -204,7 +231,7 @@
 	$temp = dataCatcher($taazecom_result['FILE'], $taazecom_begin, $taazecom_end);
 	$taazecom->setAllValue($temp, $taazecom_tag_array);
 	$taazecom->cleanDate($taazecom_tag_array);
-	var_dump($taazecom);
+	//var_dump($taazecom);
 
 
 	/*
@@ -232,20 +259,15 @@
 		"discount_e" => "折優惠價：",
 		"link_b" => "<tr><td><a href=\"",
 		"link_e" => "\">",
-		"img_b" => "",
-		"img_e" => "",
-		"date_b" => "",
-		"date_e" => "",
+		"img_b" => "original=\"",
+		"img_e" => "\" alt",
+		"date_b" => "font-weight:bold\">",
+		"date_e" => " </td></tr>",
 	];
 
 	$sanmincom_result = $sanmincom->pageParsing();
 	$temp = dataCatcher($sanmincom_result['FILE'], $sanmincom_begin, $sanmincom_end);
-	echo xmpTag($temp);
-	//$temp = xmpTag($temp);
-	//print_r($temp);
-	//$sanmincom->setAllValue($temp, $sanmincom_tag_array);
-	//var_dump($sanmincom->book_date);
-	//$sanmincom->cleanDate($sanmincom_tag_array);
+	$sanmincom->setAllValue($temp, $sanmincom_tag_array);
 	//var_dump($sanmincom);
 
 
