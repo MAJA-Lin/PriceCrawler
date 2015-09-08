@@ -21,7 +21,9 @@
 	$dis_bookscom = "http://www.books.com.tw/activity/gold66_day/";
 	$dis_taaze = "http://www.taaze.tw/act66.html";
 	$dis_sanmin = "http://activity.sanmin.com.tw/Today66";
-	$dis_king = "http://www.kingstone.com.tw/event/0708_aonsale66/onsale66.asp";
+	//$dis_king = "http://www.kingstone.com.tw/event/0708_aonsale66/onsale66.asp";
+	# This is the main discount product page  ↑↑↑
+	$dis_king = "http://www.kingstone.com.tw/event/0708_aonsale66/predict66.asp?LID=&pagefocus=predict66";
 	$dis_iread = "https://www.iread.com.tw/alldiscount.aspx";
 
 	$ref = "www.google.com.tw";
@@ -94,7 +96,9 @@
 
 	/*
 	*	Sanmin 三民書局
-	*	There is no label price shown on the discount page, so remember to set it to zero.
+	*	There is no label price shown on the discount page, so calculate it and use ceil to round fractions up.
+	*	特價網站上沒有定價資訊，所以在各value都設定完了之後，使用book_price 除以 $discount(0.66)並取無條件進位算出大約定價。
+	*	#Notice : 由於book_label要在最後作設定，setAllValue 跟 cleanValue要作調整
 	*
 	*/
 
@@ -131,6 +135,8 @@
 	}
 
 	/*
+	*	Kingstone 金石堂
+	*	網頁排版讓66折跟79折的商品混在一起，取出每周66折商品資訊的部分可能要重寫=>將讀取的資料依66折分成6~10份
 	*
 	*
 	*/
@@ -269,6 +275,43 @@
 	$temp = dataCatcher($sanmincom_result['FILE'], $sanmincom_begin, $sanmincom_end);
 	$sanmincom->setAllValue($temp, $sanmincom_tag_array);
 	//var_dump($sanmincom);
+
+
+	/*
+	*	Kingstone
+	*	金石堂
+	*	#
+	*
+	*/
+
+	$kingstonecom = new kingstone("http://www.kingstone.com.tw/"/*$dis_king*/, "", "GET", "");
+	$kingstonecom->setArray();
+
+	$kingstonecom_begin = "</div><!--header end-->";
+	$kingstonecom_end = "</div><!--content_predict66 end-->";
+	$kingstonecom_tag_array = [
+		"name_b" => "<tr><td><a href=\"http://www.m.sanmin.com.tw/Product/Index",
+		"name_e" => "</a></td>",
+		"price_b" => "66折優惠價：<span>",
+		"price_e" => "</span> 元",
+		"label_b" => "",
+		"label_e" => "",
+		"discount_b" => "class=\"gray\" >",
+		"discount_e" => "折優惠價：",
+		"link_b" => "<tr><td><a href=\"",
+		"link_e" => "\">",
+		"img_b" => "original=\"",
+		"img_e" => "\" alt",
+		"date_b" => "font-weight:bold\">",
+		"date_e" => " </td></tr>",
+	];
+
+	$kingstonecom_result = $kingstonecom->pageParsing();
+	var_dump($kingstonecom_result);
+	$temp = dataCatcher($kingstonecom_result['FILE'], $kingstonecom_begin, $kingstonecom_end);
+	//var_dump($temp);
+	//ingstone->setAllValue($temp, $kingstone_tag_array);
+	//var_dump($kingstone);
 
 
 ?>

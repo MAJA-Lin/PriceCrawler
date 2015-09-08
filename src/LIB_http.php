@@ -299,6 +299,9 @@ function http($target, $ref, $method, $data_array, $incl_head)
 	curl_setopt($ch, CURLOPT_URL, $target);             // Target site
 	curl_setopt($ch, CURLOPT_REFERER, $ref);            // Referer value
 	curl_setopt($ch, CURLOPT_VERBOSE, FALSE);           // Minimize logs
+  //Here is what I modify to ignore SSL authentication
+  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+  //Done
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);    // No certificate
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);     // Follow redirects
 	curl_setopt($ch, CURLOPT_MAXREDIRS, 4);             // Limit redirections to four
