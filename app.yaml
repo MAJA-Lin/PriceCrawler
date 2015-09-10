@@ -1,0 +1,46 @@
+application: pricecrawler-maja
+version: 1
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /src
+  static_dir: src
+
+#- url: /src/img
+#  static_dir: src/img
+
+#- url: /vendor/moderna/css
+#  static_dir: vendor/moderna/css
+
+#- url: /vendor/moderna/js
+#  static_dir: vendor/moderna/js
+
+#- url: /vendor/moderna/css/fancybox
+#  static_dir: vendor/moderna/css/fancybox
+
+#- url: /vendor/moderna/skins
+#  static_dir: vendor/moderna/skins
+
+- url: /vendor/moderna/
+  static_dir: vendor/moderna
+
+- url: /404\.html
+  script: /404.html
+
+#- url: /()  #your css folder
+#    static_dir: vendor/moderna/css
+
+#- url: /(.*\.(htm|html|css|js))$
+ # static_files: PriceCrawler/\1
+  #upload: PriceCrawler/.*\.(htm|html|css|js)$
+  #application_readable: true
+
+# Serve php scripts.
+- url: /(.+\.php)$
+  script: \1
+
+- url: /.*
+  script: index.php
+
+

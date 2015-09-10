@@ -78,6 +78,10 @@ documentation will at all times remain with copyright holders.
 /***********************************************************************
 Webbot defaults (scope = global)                                       
 ----------------------------------------------------------------------*/
+/* Solution to "Google App Engine doesn't support" */
+if (!function_exists('curl_init')) {
+            require_once 'Purl.php';
+        }
 # Define how your webbot will appear in server logs
 #define("WEBBOT_NAME", "Test Webbot");
 # Define new webbot name

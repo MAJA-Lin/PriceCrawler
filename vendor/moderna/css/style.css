@@ -5,7 +5,7 @@
 @import url('../js/google-code-prettify/prettify.css');
 /* === fontawesome === */
 /*@import url('font-awesome.css');*/
-@import url('font-awesome-4.40.css');
+@import url('font-awesome-440.css');
 /* === custom icon === */
 @import url('custom-fonts.css');
 /* ==== overwrite bootstrap standard ==== */
@@ -111,6 +111,7 @@ header .navbar {
 
 .navbar-brand {
     color: #222;
+    /*color: #6cc7ff;*/
 	text-transform: uppercase;
     font-size: 24px;
     font-weight: 700;
@@ -182,6 +183,7 @@ header  .navbar-nav > li > a {
 
 .dropdown-menu li a:hover {
     color: #fff !important;
+    /*color: #75abf6 !important;*/
 }
 
 header .nav .caret {
@@ -344,6 +346,11 @@ section.callaction {
 	padding:50px 0 0 0;
 }
 
+section.callaction-orange {
+	/*background:#f6f6f6;*/
+	background:#ffbc3d;
+	padding:50px 0 0 0;
+}
 
 
 /* ===================================
@@ -385,6 +392,43 @@ section.callaction {
 .box-gray  h4,.box-gray  i {
 	margin-bottom: 20px;
 }
+/*Add new color here*/
+.box-yellow  {
+	background: #fbffb5;
+	padding: 20px 20px 30px;
+}
+.box-yellow  h4,.box-yellow  i {
+	margin-bottom: 20px;
+}
+.box-pink  {
+	background: #ffdafa;
+	padding: 20px 20px 30px;
+}
+.box-pink  h4,.box-pink  i {
+	margin-bottom: 20px;
+}
+.box-orange  {
+	background: #fbe5d6;
+	padding: 20px 20px 30px;
+}
+.box-orange  h4,.box-orange  i {
+	margin-bottom: 20px;
+}
+.box-purple  {
+	background: #ead1ff;
+	padding: 20px 20px 30px;
+}
+.box-purple  h4,.box-purple  i {
+	margin-bottom: 20px;
+}
+.box-blue  {
+	background: #e2eaff;
+	padding: 20px 20px 30px;
+}
+.box-blue  h4,.box-blue  i {
+	margin-bottom: 20px;
+}
+/*Adding end*/
 .box-bottom {
 	padding: 20px 0;
 	text-align: center;
@@ -1863,8 +1907,10 @@ article img.pull-right, article .align-right{
 	  font-size: 13px;
 	  list-style: none;
 	  background-color: #fff;
+	  /*background-color: #75abf6;*/
 	  background-clip: padding-box;
 	  border: 1px solid #f5f5f5;
+	  /*border: 1px solid #75abf6;*/
 	  border: 1px solid rgba(0, 0, 0, .15);
 	  border-radius: 0;
 	  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);

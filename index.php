@@ -75,7 +75,7 @@
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="box">
-							<div class="box-gray aligncenter">
+							<div class="box-blue aligncenter">
 								<h4>Weekly discount</h4>
 								<div class="icon">
 									<i class="fa fa-dollar fa-3x"></i>
@@ -91,7 +91,7 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
-							<div class="box-gray aligncenter">
+							<div class="box-yellow aligncenter">
 								<h4>Lowest price</h4>
 								<div class="icon">
 									<i class="fa fa-search fa-3x"></i>
@@ -101,13 +101,13 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="#">Search now</a>
+								<a href="404.html">Search now</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
-							<div class="box-gray aligncenter">
+							<div class="box-pink aligncenter">
 								<h4>Price follower</h4>
 								<div class="icon">
 									<i class="fa fa-tags fa-3x"></i>
@@ -117,13 +117,13 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="404.html">Learn more</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
-							<div class="box-gray aligncenter">
+							<div class="box-orange aligncenter">
 								<h4>Contact</h4>
 								<div class="icon">
 									<i class="fa fa-envelope fa-3x"></i>
@@ -148,10 +148,10 @@
 			</div>
 		</div>
 		<!-- end divider -->
-		<!-- Portfolio Projects -->
+		<!-- Photo and links here -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h4 class="heading">Recent Works</h4>
+				<h4 class="heading">Bookstore</h4>
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
@@ -159,46 +159,46 @@
 						<li class="col-lg-3 design" data-id="id-0" data-type="web">
 						<div class="item-thumbs">
 						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1" href="img/works/1.jpg">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="books.com.tw : 博客來" href="src/img/bookstw_logo.png">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
 						<!-- Thumb Image and Description -->
-						<img src="img/works/1.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+						<img src="src/img/bookstw_logo.png" alt="books.com.tw : 博客來">
 						</div>
 						</li>
 						<!-- End Item Project -->
 						<!-- Item Project and Filter Name -->
 						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
 						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2" href="img/works/2.jpg">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Taaze.com.tw : 讀冊" href="src/img/taaze_logo.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
 						<!-- Thumb Image and Description -->
-						<img src="img/works/2.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+						<img src="src/img/taaze_logo.jpg" alt="Taaze.com.tw : 讀冊">
 						</li>
 						<!-- End Item Project -->
 						<!-- Item Project and Filter Name -->
 						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
 						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3" href="img/works/3.jpg">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="www.sanmin.com.tw : 三民網路書店" href="src/img/sanmin_logo.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
 						<!-- Thumb Image and Description -->
-						<img src="img/works/3.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+						<img src="src/img/sanmin_logo.jpg" alt="www.sanmin.com.tw : 三民網路書店">
 						</li>
 						<!-- End Item Project -->
 						<!-- Item Project and Filter Name -->
 						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
 						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4" href="img/works/4.jpg">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="www.iread.com.tw : 灰熊愛閱讀" href="src/img/iread_logo.jpg">
 						<span class="overlay-img"></span>
 						<span class="overlay-img-thumb font-icon-plus"></span>
 						</a>
 						<!-- Thumb Image and Description -->
-						<img src="img/works/4.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+						<img src="src/img/iread_logo.jpg" alt="www.iread.com.tw : 灰熊愛閱讀">
 						</li>
 						<!-- End Item Project -->
 					</ul>
@@ -206,10 +206,75 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 	</section>
+		<!-- End of photo -->
 
+		<!-- Start of footer -->
+	<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Get in touch with us</h5>
+					<address>
+					<strong>Scott Lin</strong><br>
+					 typhoon31815@gmail.com<br>
+					 Taiwan </address>
+					<p>
+						<a href="https://github.com/MAJA-Lin/PriceCrawler">GitHub: MAJA-Lin/PriceCrawler</a>  <br>
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Pages</h5>
+					<ul class="link-list">
+						<li><a href="discount_book_print.php">Weekly discount</a></li>
+						<li><a href="#">Bookstore</a></li>
+						<li><a href="#">Privacy policy</a></li>
+						<li><a href="#">Career center</a></li>
+						<li><a href="#">Contact us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Latest update</h5>
+					<ul class="link-list">
+						<li><a href="#">New bookstore website available</a></li>
+						<li><a href="#">Maybe add game / music support</a></li>
+						<li><a href="#">Trying to think some other uses</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>
+							<span>&copy; MAJA 2015 All right reserved. By </span><a href="http://bootstraptaste.com" target="_blank">Bootstraptaste</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<ul class="social-network">
+						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+	<!--End of footer-->
 
 	</div>
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
