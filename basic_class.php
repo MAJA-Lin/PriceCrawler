@@ -3,7 +3,7 @@
 	include_once "src/LIB_parse.php";
 	//include_once "discount_class.php";
 
-	class discount_book_page {
+	class connection_info {
 		public $target;
 		public $ref;
 		public $method;
@@ -56,7 +56,7 @@
 	/*
 	*	繼承discount_book_page, 增加了書名, 價格等等資訊;並以array存放之以方便使用
 	*/
-	class book_info extends discount_book_page {
+	class book_info extends connection_info {
 
 		public $book_name;
 		public $book_price;

@@ -1,7 +1,7 @@
 <?php
 	include_once "src/LIB_http.php";
 	include_once "src/LIB_parse.php";
-	include_once "book_class.php";
+	include_once "basic_class.php";
 	include_once "src/data_managing.php";
 
 	/*
@@ -54,7 +54,7 @@
 		/*
 		*	Clean the data, only save the necessary data.
 		*/
-		public function cleanValue($tag_array) {
+		function cleanValue($tag_array) {
 			for ($i=0; $i<count($this->book_name); $i++){
 				$this->book_link[$i] = dataCatcher($this->book_name[$i], "href=\"", "\">");
 				$this->book_name[$i] = dataCatcher($this->book_name[$i], "\">", "</");
@@ -105,7 +105,8 @@
 	class sanmin extends book_info
 	{
 
-		public $discount = 0.66;
+		protected $discount = 0.66;
+		protected $name_tag = "\">";
 
 		function setAllValue($data, $tag_array) {
 			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
@@ -117,6 +118,7 @@
 
 			$this->cleanValue($tag_array);
 			for ($i=0; $i<count($this->book_name); $i++){
+				//Calculate the label price
 				$this->book_label[$i] = ceil($this->book_price[$i] / $this->discount);
 			}
 		}
@@ -124,7 +126,10 @@
 		function cleanValue($tag_array) {
 
 			for ($i=0; $i<count($this->book_name); $i++) {
+				//book_name contains address, clean it.
 				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
+				$this->book_name[$i] = split_string($this->book_name[$i], $this->name_tag, AFTER, EXCL);
+				//Done
 				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
 				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
 				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
@@ -151,9 +156,49 @@
 	*
 	*/
 
-	class ierad extends book_info
+	class iread extends book_info
 	{
-		
+		protected $discount = 0.66;
+		protected $name_tag = "\">";
+		protected $domain = "https://www.iread.com.tw/";
+
+		function setAllValue($data, $tag_array) {
+			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
+			$this->book_price = splitColumn($data, $tag_array['price_b'], $tag_array['price_e']);
+			$this->book_discount = splitColumn($data, $tag_array['discount_b'], $tag_array['discount_e']);
+			$this->book_link = splitColumn($data, $tag_array['link_b'], $tag_array['link_e']);
+			$this->book_img = splitColumn($data, $tag_array['img_b'], $tag_array['img_e']);
+			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
+
+			$this->cleanValue($tag_array);
+			for ($i=0; $i<count($this->book_name); $i++){
+				//Calculate the label price
+				$this->book_label[$i] = ceil($this->book_price[$i] / $this->discount);
+			}
+		}
+
+		function cleanValue($tag_array) {
+
+			for ($i=0; $i<count($this->book_name); $i++) {
+				//book_name includes the web address I don't need, so just clean it
+				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
+				$this->book_name[$i] = split_string($this->book_name[$i], $this->name_tag, AFTER, EXCL);
+				//done
+
+				//The address of link and image are lack of domain, so add it here
+				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
+				$this->book_link[$i] = $this->domain . $this->book_link[$i];
+				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
+				$this->book_img[$i] = $this->domain . $this->book_img[$i];
+				//done
+
+				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
+				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
+				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
+			}
+		}
+
+
 	}
 
 
@@ -201,7 +246,7 @@
 	$temp = dataCatcher($bookscom_result['FILE'], $bookscom_begin, $bookscom_end);
 	$temp = iconv("Big5", "utf-8", $temp);
 	$bookscom->setAllValue($temp, $bookscom_tag_array);
-	//var_dump($bookscom);
+	var_dump($bookscom);
 
 
 	/*
@@ -237,7 +282,7 @@
 	$temp = dataCatcher($taazecom_result['FILE'], $taazecom_begin, $taazecom_end);
 	$taazecom->setAllValue($temp, $taazecom_tag_array);
 	$taazecom->cleanDate($taazecom_tag_array);
-	//var_dump($taazecom);
+	var_dump($taazecom);
 
 
 	/*
@@ -274,17 +319,19 @@
 	$sanmincom_result = $sanmincom->pageParsing();
 	$temp = dataCatcher($sanmincom_result['FILE'], $sanmincom_begin, $sanmincom_end);
 	$sanmincom->setAllValue($temp, $sanmincom_tag_array);
-	//var_dump($sanmincom);
+	var_dump($sanmincom);
 
 
 	/*
 	*	Kingstone
 	*	金石堂
-	*	#
+	*	#目標網站似乎有防爬? 或是防火牆擋住?
+	*		連首頁都不給爬，目前暫時無法解決
 	*
 	*/
 
-	$kingstonecom = new kingstone("http://www.kingstone.com.tw/"/*$dis_king*/, "", "GET", "");
+	/*
+	$kingstonecom = new kingstone($dis_king, "", "GET", "");
 	$kingstonecom->setArray();
 
 	$kingstonecom_begin = "</div><!--header end-->";
@@ -306,12 +353,51 @@
 		"date_e" => " </td></tr>",
 	];
 
-	$kingstonecom_result = $kingstonecom->pageParsing();
-	var_dump($kingstonecom_result);
-	$temp = dataCatcher($kingstonecom_result['FILE'], $kingstonecom_begin, $kingstonecom_end);
+	//$kingstonecom_result = $kingstonecom->pageParsing();
+	//var_dump($kingstonecom_result);
+	//$temp = dataCatcher($kingstonecom_result['FILE'], $kingstonecom_begin, $kingstonecom_end);
 	//var_dump($temp);
 	//ingstone->setAllValue($temp, $kingstone_tag_array);
 	//var_dump($kingstone);
+
+	*/
+
+
+	/*
+	*	iRead 灰熊
+	*
+	*
+	*
+	*/
+
+
+	$ireadcom = new iread($dis_iread, "", "GET", "");
+	$ireadcom->setArray();
+
+	$ireadcom_begin = "<div id=\"Weekly_bargain\">";
+	$ireadcom_end = "</div><!--Weekly_bargain-->";
+	$ireadcom_tag_array = [
+		"name_b" => "<li class=\"BookTitle\">",
+		"name_e" => "</a>",
+		"price_b" => "折<span class=\"redword\">",
+		"price_e" => "</span>元",
+		"label_b" => "",
+		"label_e" => "",
+		"discount_b" => "優惠價：<span class=\"redword\">",
+		"discount_e" => "</span>折",
+		"link_b" => "ProdNameLink\" href=\"",
+		"link_e" => "\">",
+		"img_b" => "<img src=\"",
+		"img_e" => "\" border=\"0\"",
+		"date_b" => "<li class=\"Date\">",
+		"date_e" => " <span",
+	];
+
+	$ireadcom_result = $ireadcom->pageParsing();
+	$temp = dataCatcher($ireadcom_result['FILE'], $ireadcom_begin, $ireadcom_end);
+	//print_r(xmpTag($temp));
+	$ireadcom->setAllValue($temp, $ireadcom_tag_array);
+	var_dump(count($ireadcom));
 
 
 ?>

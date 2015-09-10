@@ -2,7 +2,7 @@
 	include_once "src/LIB_http.php";
 	include_once "src/LIB_parse.php";
 	//include_once "discount_class.php";
-	include_once "book_class.php";
+	include_once "basic_class.php";
 	include_once "src/data_managing.php";
 
 	/*1.0 ver
