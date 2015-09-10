@@ -102,17 +102,6 @@
 			*	清除不必要的資料
 			*/
 
-			/*
-			for ($i=0; $i<count($this->book_name); $i++) {
-				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
-				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
-				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
-				$this->book_label[$i] = dataCatcher($this->book_label[$i], $tag_array['label_b'], $tag_array['label_e']);
-				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
-				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
-				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
-			}
-			*/
 		}
 
 		/*
@@ -132,6 +121,44 @@
 				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
 			}
 		}
+
+		function printHtml($data_id, $data_type) {
+
+			for ($i=0; $i<count($this->book_name); $i++) {
+				//data-id should be like id-0, id-5... so add 'id-' here
+				$new_data_id = "id-".$data_id;
+				$br = "&#9;";
+
+				/*
+				*	將特價書籍的所有資訊組合成$text; 另外, 書本網址的部分要用好超連結
+				*/
+				$text = "日期: ".$this->book_date[$i]."定價: ".$this->book_label[$i]."優惠價: ".$this->book_price[$i]."網址: ".$this->book_link[$i];
+
+				//Start echo
+				echo "<li class=\"item-thumbs col-lg-3 design\" data-id=\"".$new_data_id."\" data-type=\"".$data_type."\">";
+				echo "<a class=\"hover-wrap fancybox\" data-fancybox-group=\"gallery\" title=\"".$this->book_name[$i]."\" href=\"".$this->book_img[$i]."\">";
+				echo "<span class=\"overlay-img\">Date: ".$this->book_date[$i]."</span>";
+				echo "<span class=\"overlay-img-thumb font-icon-plus\"></span></a>";
+				echo "<img src=\"".$this->book_img[$i]."\" height=\"230\" width=\"230\" alt=\"".$text."\"></li>";
+				# $data_id should be add at last
+				$data_id++;
+			}
+
+		}
+
+		/*
+		<!-- Item Project and Filter Name -->
+						<li class="item-thumbs col-lg-3 design" data-id="id-0" data-type="taaze">
+							<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+							<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Taaze" href="src/img/taaze_logo.jpg">
+								<span class="overlay-img">Date: 0915</span>
+								<span class="overlay-img-thumb font-icon-plus"></span>
+							</a>
+							<!-- Thumb Image and Description -->
+							<img src="src/img/taaze_logo.jpg" height="230" width="230" alt="Simple text">
+						</li>
+						<!-- End Item Project -->
+		*/
 
 	}
 

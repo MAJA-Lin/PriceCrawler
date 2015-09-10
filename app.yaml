@@ -37,7 +37,10 @@ handlers:
   #application_readable: true
 
 # Serve php scripts.
-- url: /(.+\.php)$
+- url: /src/(.+\.php)
+  script: PriceCrawler/src/\1
+
+- url: /(.+\.php)
   script: \1
 
 - url: /.*

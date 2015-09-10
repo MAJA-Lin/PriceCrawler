@@ -1,14 +1,27 @@
 <?php
-
+	include_once "discount_book.php";
+	$i = 0;
+	$tag_books = "bookscom";
+	$tag_taaze = "taaze";
+	$tag_sanmin = "sanmin";
+	$tag_iread = "iread";
+	/*
+	var_dump($bookscom);
+	var_dump($taazecom);
+	var_dump($sanmincom);
+	*/
+	//Due to the picture display problem, use taaze logo instead of their own books img on taaze.com.tw
+	$taazecom->setImage();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Price Crawler</title>
+	<title>Weekly discount</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Love, Peace and Discount Price!" />
+	<meta name="description" content="Shows weekly discount books" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
 	<link href="vendor/moderna/css/bootstrap.min.css" rel="stylesheet" />
@@ -52,155 +65,44 @@
         </div>
 	</header>
 	<!-- end header -->
-	<!-- 中間標語 -->
-	<section class="callaction">
+
+	<!-- Start of inner headline -->
+	<section id="inner-headline">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="big-cta">
-					<div class="cta-text">
-						<h2><span>PriceCrawler</span> &nbsp;&nbsp;To Buy or not to buy</h2>
-					</div>
-				</div>
+				<ul class="breadcrumb">
+					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+					<li class="active">Weekly</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	</section>
-	<!-- End of Slogan -->
-
+	<!-- End of inner headline -->
+	<!-- Start of content-->
 	<section id="content">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-blue aligncenter">
-								<h4>Weekly discount</h4>
-								<div class="icon">
-									<i class="fa fa-dollar fa-3x"></i>
-								</div>
-								<p>
-								 Show weekly discount information of books in 4 online bookstores (e.g. Taaze, Sanmin...).
-								</p>
-							</div>
-							<div class="box-bottom">
-								<a href="discount_view.php">Check Here</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-yellow aligncenter">
-								<h4>Lowest price</h4>
-								<div class="icon">
-									<i class="fa fa-search fa-3x"></i>
-								</div>
-								<p>
-								 Search the lowest price of the book you want on online bookstores. (not available now)
-								</p>
-							</div>
-							<div class="box-bottom">
-								<a href="discount_book_print.php">Search now</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-pink aligncenter">
-								<h4>Price follower</h4>
-								<div class="icon">
-									<i class="fa fa-tags fa-3x"></i>
-								</div>
-								<p>
-								 Want to be noticed when the book meets the lowest price? We will email you! (not available now)
-								</p>
-							</div>
-							<div class="box-bottom">
-								<a href="404.html">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-orange aligncenter">
-								<h4>Contact</h4>
-								<div class="icon">
-									<i class="fa fa-envelope fa-3x"></i>
-								</div>
-								<p>
-								 If you got any question, please leave us messages. We will reply soon.
-								</p>
-							</div>
-							<div class="box-bottom">
-								<a href="#">Contact us</a>
-							</div>
-						</div>
-					</div>
+				<ul class="portfolio-categ filter">
+					<li class="all active"><a href="#">All</a></li>
+					<li class="bookscom"><a href="#" title="博客來">博客來</a></li>
+					<li class="taaze"><a href="#" title="讀冊">讀冊</a></li>
+					<li class="sanmin"><a href="#" title="三民">三民</a></li>
+					<li class="iread"><a href="#" title="灰熊">灰熊</a></li>
+				</ul>
+				<div class="clearfix">
 				</div>
-			</div>
-		</div>
-		<!-- divider -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="solidline">
-				</div>
-			</div>
-		</div>
-		<!-- end divider -->
-		<!-- Photo and links here -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h4 class="heading">Bookstore</h4>
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
-						<!-- Item Project and Filter Name -->
-						<li class="col-lg-3 design" data-id="id-0" data-type="web">
-						<div class="item-thumbs">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="books.com.tw : 博客來" href="src/img/bookstw_logo.png">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="src/img/bookstw_logo.png" alt="books.com.tw : 博客來">
-						</div>
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Taaze.com.tw : 讀冊" href="src/img/taaze_logo.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="src/img/taaze_logo.jpg" alt="Taaze.com.tw : 讀冊">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="www.sanmin.com.tw : 三民網路書店" href="src/img/sanmin_logo.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="src/img/sanmin_logo.jpg" alt="www.sanmin.com.tw : 三民網路書店">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="www.iread.com.tw : 灰熊愛閱讀" href="src/img/iread_logo.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="src/img/iread_logo.jpg" alt="www.iread.com.tw : 灰熊愛閱讀">
-						</li>
-						<!-- End Item Project -->
+						<?php
+							$taazecom->printHtml($i, $tag_taaze);
+							$bookscom->printHtml($i, $tag_books);
+							$sanmincom->printHtml($i, $tag_sanmin);
+							$ireadcom->printHtml($i, $tag_iread);
+						?>
 					</ul>
 					</section>
 				</div>
@@ -208,7 +110,7 @@
 		</div>
 	</div>
 	</section>
-		<!-- End of photo -->
+
 
 		<!-- Start of footer -->
 	<footer>
@@ -278,7 +180,6 @@
 
 	</div>
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
 
 	<!-- javascript
     ================================================== -->

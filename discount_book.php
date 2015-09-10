@@ -36,6 +36,8 @@
 	*/
 	class books_com extends book_info
 	{
+		protected $img_tag = "&v=";
+		protected $img_pre = "getImage?image=";
 
 		function setAllValue($data, $tag_array) {
 			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
@@ -49,6 +51,7 @@
 			//$this->book_link = splitColumn($this->book_name, $tag_array['link_b'], $tag_array['link_e']);
 
 			$this->cleanValue($tag_array);
+			$this->setImage();
 		}
 
 		/*
@@ -63,6 +66,13 @@
 				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
 				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
 				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
+			}
+		}
+
+		function setImage() {
+			for ($i=0; $i < count($this->book_img); $i++) {
+				$this->book_img[$i] = split_string($this->book_img[$i], $this->img_pre, AFTER, EXCL);
+				$this->book_img[$i] = split_string($this->book_img[$i], $this->img_tag, BEFORE, EXCL);
 			}
 		}
 	}
@@ -90,6 +100,13 @@
 				$this->book_date[$i] = preg_replace('/\s+/', '', $this->book_date[$i]);
 			}
 
+		}
+
+		function setImage() {
+			for ($i=0; $i < count($this->book_img); $i++) {
+
+				$this->book_img[$i] = "src/img/taaze_logo.jpg";
+			}
 		}
 	}
 
@@ -397,7 +414,7 @@
 	$temp = dataCatcher($ireadcom_result['FILE'], $ireadcom_begin, $ireadcom_end);
 	//print_r(xmpTag($temp));
 	$ireadcom->setAllValue($temp, $ireadcom_tag_array);
-	//var_dump(count($ireadcom));
+	//var_dump($ireadcom);
 
 
 

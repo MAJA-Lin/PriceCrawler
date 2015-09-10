@@ -4,7 +4,7 @@
 
 
 	/**
-	*	這個Class已經移到book_class.php作整合了，所以注意不要再引用此檔案
+	*	這個Class已經移到basic_class.php作整合了，所以注意不要再引用此檔案
 	*
 	*/
 
