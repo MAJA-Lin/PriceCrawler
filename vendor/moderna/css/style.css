@@ -4,7 +4,8 @@
 /* === prettify === */
 @import url('../js/google-code-prettify/prettify.css');
 /* === fontawesome === */
-@import url('font-awesome.css');
+/*@import url('font-awesome.css');*/
+@import url('font-awesome-4.40.css');
 /* === custom icon === */
 @import url('custom-fonts.css');
 /* ==== overwrite bootstrap standard ==== */
@@ -338,7 +339,8 @@ ul.nav li.dropdown a {
 7. Section: call action
 ==================================== */
 section.callaction {
-	background:#f9f9f9;
+	/*background:#f6f6f6;*/
+	background:#dcfbe7;
 	padding:50px 0 0 0;
 }
 
@@ -1608,6 +1610,7 @@ section.demogrid .show-grid .nest {
 
 section.demogrid .col-lg-12.nest {
 	background:#f6f6f6;
+	/*#b59ddd;*/
 	text-align:center;
 	padding:20px 0 0;
 }

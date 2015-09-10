@@ -246,7 +246,7 @@
 	$temp = dataCatcher($bookscom_result['FILE'], $bookscom_begin, $bookscom_end);
 	$temp = iconv("Big5", "utf-8", $temp);
 	$bookscom->setAllValue($temp, $bookscom_tag_array);
-	var_dump($bookscom);
+	//var_dump($bookscom);
 
 
 	/*
@@ -282,7 +282,7 @@
 	$temp = dataCatcher($taazecom_result['FILE'], $taazecom_begin, $taazecom_end);
 	$taazecom->setAllValue($temp, $taazecom_tag_array);
 	$taazecom->cleanDate($taazecom_tag_array);
-	var_dump($taazecom);
+	//var_dump($taazecom);
 
 
 	/*
@@ -319,7 +319,7 @@
 	$sanmincom_result = $sanmincom->pageParsing();
 	$temp = dataCatcher($sanmincom_result['FILE'], $sanmincom_begin, $sanmincom_end);
 	$sanmincom->setAllValue($temp, $sanmincom_tag_array);
-	var_dump($sanmincom);
+	//var_dump($sanmincom);
 
 
 	/*
@@ -397,7 +397,22 @@
 	$temp = dataCatcher($ireadcom_result['FILE'], $ireadcom_begin, $ireadcom_end);
 	//print_r(xmpTag($temp));
 	$ireadcom->setAllValue($temp, $ireadcom_tag_array);
-	var_dump(count($ireadcom));
+	//var_dump(count($ireadcom));
+
+
+
+	/*
+	*	Pass objects / variables to another page via post
+	*	傳值
+	*
+	*
+	*
+	$target = "/discount_book_print.php";
+	$method = "POST";
+	$book_array = array($bookscom, $taazecom, $sanmincom, $ireadcom);
+	http($target, $ref, $method, $book_array, EXCL_HEAD);
+	*/
+
 
 
 ?>
