@@ -1,5 +1,5 @@
 # PriceCrawler
-Crawling the lowest price of the book in Taiwan's bookstore website
+<p>This is a web application that crawling the lowest price of the book in Taiwan's bookstore website<p>
 
-Language: PHP
-Tools: Bootstrap, Moderna Template, and Michael Schrenk's webbot library.
+## Languages / Tools:
+PHP, Bootstrap, Moderna Template, and Michael Schrenk's webbot library.
