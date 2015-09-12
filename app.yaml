@@ -25,6 +25,9 @@ handlers:
 - url: /vendor/moderna/
   static_dir: vendor/moderna
 
+- url: /vendor/twbs/
+  static_dir: vendor/twbs
+
 - url: /404\.html
   script: /404.html
 
@@ -36,14 +39,41 @@ handlers:
   #upload: PriceCrawler/.*\.(htm|html|css|js)$
   #application_readable: true
 
+
+- url: /src/constants.php
+  script: src/constants.php
+
+- url: /src/data_managing.php
+  script: src/data_managing.php
+
+- url: /src/functions.php
+  script: src/functions.php
+
+- url: /src/LIB_http.php
+  script: src/LIB_http.php
+
+- url: /src/LIB_parse.php
+  script: src/LIB_parse.php
+
+- url: /src/Purl.php
+  script: src/Purl.php
+
+- url: /src/constants.php
+  script: src/constants.php
+
+
+
 # Serve php scripts.
 - url: /src/(.+\.php)
-  script: PriceCrawler/src/\1
+#  script: src/\1
+  script: src/
 
 - url: /(.+\.php)
   script: \1
 
-- url: /.*
+# - url: /.*
+#   script: index.php
+- url: /(.+)?/?
   script: index.php
 
 
