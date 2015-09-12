@@ -85,7 +85,7 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="discount_view.php">Check Here</a>
+								<a href="discount_view_img.php">Check Here</a>
 							</div>
 						</div>
 					</div>
@@ -230,7 +230,7 @@
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="discount_book_print.php">Weekly discount</a></li>
+						<li><a href="#">Weekly discount</a></li>
 						<li><a href="#">Bookstore</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Career center</a></li>

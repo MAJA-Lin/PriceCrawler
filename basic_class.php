@@ -122,7 +122,7 @@
 			}
 		}
 
-		function printHtml($data_id, $data_type) {
+		function imgPrint($data_id, $data_type) {
 
 			for ($i=0; $i<count($this->book_name); $i++) {
 				//data-id should be like id-0, id-5... so add 'id-' here
@@ -132,7 +132,7 @@
 				/*
 				*	將特價書籍的所有資訊組合成$text; 另外, 書本網址的部分要用好超連結
 				*/
-				$text = "日期: ".$this->book_date[$i]."定價: ".$this->book_label[$i]."優惠價: ".$this->book_price[$i]."網址: ".$this->book_link[$i];
+				$text = $this->book_date[$i]."定價: ".$this->book_label[$i]."優惠價: ".$this->book_price[$i];
 
 				//Start echo
 				echo "<li class=\"item-thumbs col-lg-3 design\" data-id=\"".$new_data_id."\" data-type=\"".$data_type."\">";

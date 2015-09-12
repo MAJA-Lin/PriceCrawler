@@ -72,8 +72,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="breadcrumb">
-					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">Weekly</li>
+					<li><a href="index.php"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+					<li><a href="#">Weekly discount</a><i class="icon-angle-right"></i></li>
+					<li class="active">Image viewing</li>
 				</ul>
 			</div>
 		</div>
@@ -98,10 +99,10 @@
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
 						<?php
-							$taazecom->printHtml($i, $tag_taaze);
-							$bookscom->printHtml($i, $tag_books);
-							$sanmincom->printHtml($i, $tag_sanmin);
-							$ireadcom->printHtml($i, $tag_iread);
+							$taazecom->imgPrint($i, $tag_taaze);
+							$bookscom->imgPrint($i, $tag_books);
+							$sanmincom->imgPrint($i, $tag_sanmin);
+							$ireadcom->imgPrint($i, $tag_iread);
 						?>
 					</ul>
 					</section>
@@ -132,7 +133,7 @@
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="discount_book_print.php">Weekly discount</a></li>
+						<li><a href="#">Weekly discount</a></li>
 						<li><a href="#">Bookstore</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Career center</a></li>
