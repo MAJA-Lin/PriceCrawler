@@ -122,6 +122,30 @@
 			}
 		}
 
+
+		/*
+		*	String to Date
+		*	字串 / 文字 轉成date, 格式統一為 mm/dd
+		*	format =>  date('m/d') => e.g. 12/25
+		*	PS: Taaze頭兩個是期間(數日)而非特定某日,考慮放棄頭兩格的資料輸出
+		*		(此function 整理出來的資料暫定只使用在discount_view_form上, 所以只求form上的輸出整齊)
+		*	# The first and second date of taaze are period, not specified date. In this case (the output of this function),
+		*		maybe ignore those two date will be ok.
+		*
+		*
+		*	作法: 刪除月, 日, 括號, dash, 星期幾等等資訊，只留數字(日期), 並按照格式(mm/dd)補上斜線
+		*/
+
+		function stringToDate() {
+
+		}
+
+
+		/*
+		*	print the data to discount_view_img.php
+		*	依照discount_view_img 的html格式/欄位輸出資料
+		*
+		*/
 		function printImg($data_id, $data_type) {
 
 			for ($i=0; $i<count($this->book_name); $i++) {
@@ -147,7 +171,14 @@
 		}
 
 
-		function printBox() {
+		/*
+		*	Use if and for, and use book_date as key ( lenth($this->book_date) < 某數字 )
+		*	過濾讀冊的區間(非特定日)特價
+		*
+		*
+		*/
+
+		function printForm() {
 			
 		}
 
