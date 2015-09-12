@@ -169,7 +169,8 @@
 	}
 
 	/*
-	*
+	*	灰熊 / book_img 要加上domain; 因為img_tag的部分為了更精準的抓到圖片(原版本會抓到試閱的網址), 有將圖片網址一部分含進去,
+	*		所以記得將ProductFile/ 補回去
 	*
 	*/
 
@@ -178,6 +179,7 @@
 		protected $discount = 0.66;
 		protected $name_tag = "\">";
 		protected $domain = "https://www.iread.com.tw/";
+		protected $domain_img = "https://www.iread.com.tw/ProductFile";
 
 		function setAllValue($data, $tag_array) {
 			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
@@ -205,8 +207,9 @@
 				//The address of link and image are lack of domain, so add it here
 				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
 				$this->book_link[$i] = $this->domain . $this->book_link[$i];
+				//IMG
 				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
-				$this->book_img[$i] = $this->domain . $this->book_img[$i];
+				$this->book_img[$i] = $this->domain_img . $this->book_img[$i];
 				//done
 
 				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
@@ -404,8 +407,8 @@
 		"discount_e" => "</span>折",
 		"link_b" => "ProdNameLink\" href=\"",
 		"link_e" => "\">",
-		"img_b" => "<img src=\"",
-		"img_e" => "\" border=\"0\"",
+		"img_b" => "<img src=\"ProductFile",
+		"img_e" => "\" border=",
 		"date_b" => "<li class=\"Date\">",
 		"date_e" => " <span",
 	];
