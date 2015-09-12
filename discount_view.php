@@ -24,13 +24,13 @@
 	<meta name="description" content="Shows weekly discount books" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
-	<link href="vendor/moderna/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="vendor/moderna/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-	<link href="vendor/moderna/css/jcarousel.css" rel="stylesheet" />
-	<link href="vendor/moderna/css/flexslider.css" rel="stylesheet" />
-	<link href="vendor/moderna/css/style.css" rel="stylesheet" />
+	<link href="src/moderna/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="src/moderna/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+	<link href="src/moderna/css/jcarousel.css" rel="stylesheet" />
+	<link href="src/moderna/css/flexslider.css" rel="stylesheet" />
+	<link href="src/moderna/css/style.css" rel="stylesheet" />
 	<!-- Theme skin -->
-	<link href="vendor/moderna/skins/default.css" rel="stylesheet" />
+	<link href="src/moderna/skins/default.css" rel="stylesheet" />
 </head>
 <body>
 	<div id="wrapper">
@@ -184,16 +184,16 @@
 	<!-- javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="vendor/moderna/js/jquery.js"></script>
-	<script src="vendor/moderna/js/jquery.easing.1.3.js"></script>
-	<script src="vendor/moderna/js/bootstrap.min.js"></script>
-	<script src="vendor/moderna/js/jquery.fancybox.pack.js"></script>
-	<script src="vendor/moderna/js/jquery.fancybox-media.js"></script>
-	<script src="vendor/moderna/js/google-code-prettify/prettify.js"></script>
-	<script src="vendor/moderna/js/portfolio/jquery.quicksand.js"></script>
-	<script src="vendor/moderna/js/portfolio/setting.js"></script>
-	<script src="vendor/moderna/js/jquery.flexslider.js"></script>
-	<script src="vendor/moderna/js/animate.js"></script>
-	<script src="vendor/moderna/js/custom.js"></script>
+	<script src="src/moderna/js/jquery.js"></script>
+	<script src="src/moderna/js/jquery.easing.1.3.js"></script>
+	<script src="src/moderna/js/bootstrap.min.js"></script>
+	<script src="src/moderna/js/jquery.fancybox.pack.js"></script>
+	<script src="src/moderna/js/jquery.fancybox-media.js"></script>
+	<script src="src/moderna/js/google-code-prettify/prettify.js"></script>
+	<script src="src/moderna/js/portfolio/jquery.quicksand.js"></script>
+	<script src="src/moderna/js/portfolio/setting.js"></script>
+	<script src="src/moderna/js/jquery.flexslider.js"></script>
+	<script src="src/moderna/js/animate.js"></script>
+	<script src="src/moderna/js/custom.js"></script>
 </body>
 </html>
