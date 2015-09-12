@@ -122,7 +122,7 @@
 			}
 		}
 
-		function imgPrint($data_id, $data_type) {
+		function printImg($data_id, $data_type) {
 
 			for ($i=0; $i<count($this->book_name); $i++) {
 				//data-id should be like id-0, id-5... so add 'id-' here
@@ -144,6 +144,11 @@
 				$data_id++;
 			}
 
+		}
+
+
+		function printBox() {
+			
 		}
 
 		/*

@@ -1049,6 +1049,70 @@ border: 1px solid #e6e6e6;
 	display:block;
 	color:#fff;
 }
+/* Add new pricing-box : pink, purple, green and orange(based on special, and also have to modify default.css[where really colors] )*/
+/* For easily use, add all new columns here*/
+.pricing-box.pink .pricing-offer{
+	color:#fff;
+}
+.pricing-box-alt.pink .pricing-heading {
+	background: #fcfcfc;
+	text-align: center;
+	padding:40px 0 1px 0;
+	border-bottom:none;
+	display:block;
+	color:#fff;
+}
+.pricing-box-alt.pink .pricing-heading h3 {
+	color:#fff;
+}
+/* Divider*/
+.pricing-box.purple .pricing-offer{
+	color:#fff;
+}
+.pricing-box-alt.purple .pricing-heading {
+	background: #fcfcfc;
+	text-align: center;
+	padding:40px 0 1px 0;
+	border-bottom:none;
+	display:block;
+	color:#fff;
+}
+.pricing-box-alt.purple .pricing-heading h3 {
+	color:#fff;
+}
+/* Divider*/
+.pricing-box.green .pricing-offer{
+	color:#fff;
+}
+.pricing-box-alt.green .pricing-heading {
+	background: #fcfcfc;
+	text-align: center;
+	padding:40px 0 1px 0;
+	border-bottom:none;
+	display:block;
+	color:#fff;
+}
+.pricing-box-alt.green .pricing-heading h3 {
+	color:#fff;
+}
+/* Divider*/
+.pricing-box.orange .pricing-offer{
+	color:#fff;
+}
+.pricing-box-alt.orange .pricing-heading {
+	background: #fcfcfc;
+	text-align: center;
+	padding:40px 0 1px 0;
+	border-bottom:none;
+	display:block;
+	color:#fff;
+}
+.pricing-box-alt.orange .pricing-heading h3 {
+	color:#fff;
+}
+/* End of modification*/
+/* Finished!*/
+
 .pricing-box-alt.special .pricing-heading h3 {
 	color:#fff;
 }

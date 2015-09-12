@@ -21,7 +21,7 @@
 	<meta charset="UTF-8">
 	<title>Weekly discount</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Shows weekly discount books with images" />
+	<meta name="description" content="Shows weekly discount books with form" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
 	<link href="src/moderna/css/bootstrap.min.css" rel="stylesheet" />
@@ -74,7 +74,7 @@
 				<ul class="breadcrumb">
 					<li><a href="index.php"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
 					<li><a href="#">Weekly discount</a><i class="icon-angle-right"></i></li>
-					<li class="active">Image viewing</li>
+					<li class="active">Form viewing</li>
 				</ul>
 			</div>
 		</div>
@@ -82,30 +82,106 @@
 	</section>
 	<!-- End of inner headline -->
 	<!-- Start of content-->
-	<section id="content">
+		<section id="content">
 	<div class="container">
+		<!-- divider -->
 		<div class="row">
 			<div class="col-lg-12">
-				<ul class="portfolio-categ filter">
-					<li class="all active"><a href="#">All</a></li>
-					<li class="bookscom"><a href="#" title="博客來">博客來</a></li>
-					<li class="taaze"><a href="#" title="讀冊">讀冊</a></li>
-					<li class="sanmin"><a href="#" title="三民">三民</a></li>
-					<li class="iread"><a href="#" title="灰熊">灰熊</a></li>
-				</ul>
-				<div class="clearfix">
+				<div class="solidline">
 				</div>
-				<div class="row">
-					<section id="projects">
-					<ul id="thumbs" class="portfolio">
-						<?php
-							$taazecom->printImg($i, $tag_taaze);
-							$bookscom->printImg($i, $tag_books);
-							$sanmincom->printImg($i, $tag_sanmin);
-							$ireadcom->printImg($i, $tag_iread);
-						?>
-					</ul>
-					</section>
+			</div>
+		</div>
+		<!-- end divider -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h4>Weekly <strong>Discount</strong></h4>
+			</div>
+			<div class="col-lg-3">
+				<div class="pricing-box-alt pink">
+					<div class="pricing-heading">
+						<h3>Taaze <strong>讀冊</strong></h3>
+					</div>
+					<div class="pricing-terms">
+						<h6>&#36;15.00 / Month</h6>
+					</div>
+					<div class="pricing-content">
+						<ul>
+							<li><i class="icon-ok"></i> 100 applications</li>
+							<li><i class="icon-ok"></i> 24x7 support available</li>
+							<li><i class="icon-ok"></i> No hidden fees</li>
+							<li><i class="icon-ok"></i> Free 30-days trial</li>
+							<li><i class="icon-ok"></i> Stop anytime easily</li>
+						</ul>
+					</div>
+					<div class="pricing-action">
+						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="pricing-box-alt green">
+					<div class="pricing-heading">
+						<h3>博 <strong>客來</strong></h3>
+					</div>
+					<div class="pricing-terms">
+						<h6>&#36;20.00 / Month</h6>
+					</div>
+					<div class="pricing-content">
+						<ul>
+							<li><i class="icon-ok"></i> 100 applications</li>
+							<li><i class="icon-ok"></i> 24x7 support available</li>
+							<li><i class="icon-ok"></i> No hidden fees</li>
+							<li><i class="icon-ok"></i> Free 30-days trial</li>
+							<li><i class="icon-ok"></i> Stop anytime easily</li>
+						</ul>
+					</div>
+					<div class="pricing-action">
+						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="pricing-box-alt purple">
+					<div class="pricing-heading">
+						<h3>三民 <strong>Sanmin</strong></h3>
+					</div>
+					<div class="pricing-terms">
+						<h6>&#36;15.00 / Month</h6>
+					</div>
+					<div class="pricing-content">
+						<ul>
+							<li><i class="icon-ok"></i> 100 applications</li>
+							<li><i class="icon-ok"></i> 24x7 support available</li>
+							<li><i class="icon-ok"></i> No hidden fees</li>
+							<li><i class="icon-ok"></i> Free 30-days trial</li>
+							<li><i class="icon-ok"></i> Stop anytime easily</li>
+						</ul>
+					</div>
+					<div class="pricing-action">
+						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="pricing-box-alt orange">
+					<div class="pricing-heading">
+						<h3>灰熊 <strong>iRead</strong></h3>
+					</div>
+					<div class="pricing-terms">
+						<h6>&#36;15.00 / Month</h6>
+					</div>
+					<div class="pricing-content">
+						<ul>
+							<li><i class="icon-ok"></i> 100 applications</li>
+							<li><i class="icon-ok"></i> 24x7 support available</li>
+							<li><i class="icon-ok"></i> No hidden fees</li>
+							<li><i class="icon-ok"></i> Free 30-days trial</li>
+							<li><i class="icon-ok"></i> Stop anytime easily</li>
+						</ul>
+					</div>
+					<div class="pricing-action">
+						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
+					</div>
 				</div>
 			</div>
 		</div>

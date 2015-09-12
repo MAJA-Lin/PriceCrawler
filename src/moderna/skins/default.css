@@ -154,10 +154,42 @@ ul.clients li:hover {
 	background: #68A4C4;
 }
 
+/* Add new pricing-box : pink, purple, green and orange(based on special); and style.css has been already modified. */
+/* Add three colors together(right here)*/
+
+.pricing-box-alt.pink .pricing-heading {
+	background: #EF70B6;
+}
+.pricing-box.pink .pricing-offer{
+	background: #EF70B6;
+}
+/* Divider */
+.pricing-box-alt.purple .pricing-heading {
+	background: #7B2242;
+}
+.pricing-box.purple .pricing-offer{
+	background: #7B2242;
+}
+/* Divider */
+.pricing-box-alt.green .pricing-heading {
+	background: #8FC320;
+}
+.pricing-box.green .pricing-offer{
+	background: #8FC320;
+}
+/* Divider */
+.pricing-box-alt.orange .pricing-heading {
+	background: #F68319;
+}
+.pricing-box.orange .pricing-offer{
+	background: #F68319;
+}
+/* Modification over*/
+
 
 /* portfolio */
 .item-thumbs .hover-wrap .overlay-img-thumb {
-	background: #68A4C4;	
+	background: #68A4C4;
 }
 
 
