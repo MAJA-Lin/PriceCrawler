@@ -52,6 +52,7 @@
 
 			$this->cleanValue($tag_array);
 			$this->setImage();
+			$this->stringToDate();
 		}
 
 		/*
@@ -100,6 +101,8 @@
 				$this->book_date[$i] = preg_replace('/\s+/', '', $this->book_date[$i]);
 			}
 
+			$this->stringToDate();
+
 		}
 
 		function setImage() {
@@ -117,6 +120,8 @@
 	*	特價網站上沒有定價資訊，所以在各value都設定完了之後，使用book_price 除以 $discount(0.66)並取無條件進位算出大約定價。
 	*	#Notice : 由於book_label要在最後作設定，setAllValue 跟 cleanValue要作調整
 	*
+	*	Due to the date format is different from others, should modify function 'stringToDate' of class sanmin
+	*	三民日期格式不同，所以需要overriding
 	*/
 
 	class sanmin extends book_info
@@ -134,6 +139,7 @@
 			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
 
 			$this->cleanValue($tag_array);
+			$this->stringToDate2();
 			for ($i=0; $i<count($this->book_name); $i++){
 				//Calculate the label price
 				$this->book_label[$i] = ceil($this->book_price[$i] / $this->discount);
@@ -190,6 +196,7 @@
 			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
 
 			$this->cleanValue($tag_array);
+			$this->stringToDate2();
 			for ($i=0; $i<count($this->book_name); $i++){
 				//Calculate the label price
 				$this->book_label[$i] = ceil($this->book_price[$i] / $this->discount);
@@ -217,8 +224,6 @@
 				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
 			}
 		}
-
-
 	}
 
 

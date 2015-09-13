@@ -53,9 +53,9 @@
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
                             	Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Weekly-discount</a></li>
-                                <li><a href="#">Media</a></li>
-								<li><a href="#">GitHub Page</a></li>
+                                <li><a href="discount_view_img.php">Discount (Image)</a></li>
+                                <li><a href="discount_view_form.php">Discount (Form)</a></li>
+								<li><a href="#">Search</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
@@ -84,110 +84,29 @@
 	<!-- Start of content-->
 		<section id="content">
 	<div class="container">
-		<!-- divider -->
+	<!-- divider -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="solidline">
 				</div>
 			</div>
 		</div>
-		<!-- end divider -->
+	<!-- end divider -->
+	<!-- Start of form-->
 		<div class="row">
 			<div class="col-lg-12">
 				<h4>Weekly <strong>Discount</strong></h4>
 			</div>
-			<div class="col-lg-3">
-				<div class="pricing-box-alt pink">
-					<div class="pricing-heading">
-						<h3>Taaze <strong>讀冊</strong></h3>
-					</div>
-					<div class="pricing-terms">
-						<h6>&#36;15.00 / Month</h6>
-					</div>
-					<div class="pricing-content">
-						<ul>
-							<li><i class="icon-ok"></i> 100 applications</li>
-							<li><i class="icon-ok"></i> 24x7 support available</li>
-							<li><i class="icon-ok"></i> No hidden fees</li>
-							<li><i class="icon-ok"></i> Free 30-days trial</li>
-							<li><i class="icon-ok"></i> Stop anytime easily</li>
-						</ul>
-					</div>
-					<div class="pricing-action">
-						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="pricing-box-alt green">
-					<div class="pricing-heading">
-						<h3>博 <strong>客來</strong></h3>
-					</div>
-					<div class="pricing-terms">
-						<h6>&#36;20.00 / Month</h6>
-					</div>
-					<div class="pricing-content">
-						<ul>
-							<li><i class="icon-ok"></i> 100 applications</li>
-							<li><i class="icon-ok"></i> 24x7 support available</li>
-							<li><i class="icon-ok"></i> No hidden fees</li>
-							<li><i class="icon-ok"></i> Free 30-days trial</li>
-							<li><i class="icon-ok"></i> Stop anytime easily</li>
-						</ul>
-					</div>
-					<div class="pricing-action">
-						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="pricing-box-alt purple">
-					<div class="pricing-heading">
-						<h3>三民 <strong>Sanmin</strong></h3>
-					</div>
-					<div class="pricing-terms">
-						<h6>&#36;15.00 / Month</h6>
-					</div>
-					<div class="pricing-content">
-						<ul>
-							<li><i class="icon-ok"></i> 100 applications</li>
-							<li><i class="icon-ok"></i> 24x7 support available</li>
-							<li><i class="icon-ok"></i> No hidden fees</li>
-							<li><i class="icon-ok"></i> Free 30-days trial</li>
-							<li><i class="icon-ok"></i> Stop anytime easily</li>
-						</ul>
-					</div>
-					<div class="pricing-action">
-						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="pricing-box-alt orange">
-					<div class="pricing-heading">
-						<h3>灰熊 <strong>iRead</strong></h3>
-					</div>
-					<div class="pricing-terms">
-						<h6>&#36;15.00 / Month</h6>
-					</div>
-					<div class="pricing-content">
-						<ul>
-							<li><i class="icon-ok"></i> 100 applications</li>
-							<li><i class="icon-ok"></i> 24x7 support available</li>
-							<li><i class="icon-ok"></i> No hidden fees</li>
-							<li><i class="icon-ok"></i> Free 30-days trial</li>
-							<li><i class="icon-ok"></i> Stop anytime easily</li>
-						</ul>
-					</div>
-					<div class="pricing-action">
-						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
-					</div>
-				</div>
-			</div>
+			<?php
+				$taazecom->printForm("pink");
+				$bookscom->printForm("green");
+				$sanmincom->printForm("purple");
+				$ireadcom->printForm("orange");
+			?>
 		</div>
 	</div>
 	</section>
-
+	<!-- End of form-->
 
 	<!-- Start of footer -->
 	<footer>
@@ -209,11 +128,12 @@
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="#">Weekly discount</a></li>
+						<li><a href="discount_view_img.php">Weekly discount (images)</a></li>
+						<li><a href="discount_view_form.php">Weekly discount (form)</a></li>
 						<li><a href="#">Bookstore</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
+						<li><a href="contact.html">Contact us</a></li>
 					</ul>
 				</div>
 			</div>

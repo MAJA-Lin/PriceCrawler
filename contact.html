@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Not Available</title>
+	<title>Contact us</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Error: 404" />
+	<meta name="description" content="Contact by email" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
 	<link href="src/moderna/css/bootstrap.min.css" rel="stylesheet" />
@@ -16,6 +16,7 @@
 	<link href="src/moderna/skins/default.css" rel="stylesheet" />
 </head>
 <body>
+	<div id="wrapper">
 	<!-- start header -->
 	<header>
         <div class="navbar navbar-default navbar-static-top">
@@ -35,9 +36,9 @@
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
                             	Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Weekly-discount</a></li>
-                                <li><a href="#">Media</a></li>
-								<li><a href="#">GitHub Page</a></li>
+                                <li><a href="discount_view_img.php">Discount (Image)</a></li>
+                                <li><a href="discount_view_form.php">Discount (Form)</a></li>
+								<li><a href="#">Search</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
@@ -48,43 +49,22 @@
 	</header>
 	<!-- end header -->
 	<!-- 中間標語 -->
-	<section class="callaction-orange">
+	<section class="callaction">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="big-cta">
 					<div class="cta-text">
-						<h2>Sorry, this page is not available right now.<br>
-							Come back later.
-						</h2>
-					</div>
-				</div>
-		</div>
-	</div>
-	</section>
-	<!-- End of Slogan -->
-	<!-- Start of image slider-->
-	<section id="featured">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div id="main-slider" class="flexslider">
-		            	<ul class="slides">
-		              		<li>
-		                	<img src="src/img/construction.jpg" height="400" width="1200" alt="" />
-			                	<div class="flex-caption">
-				                    <h3>Not available</h3> 
-									<p>This page is under construction.</p> 
-									<a href="javascript:history.back()" class="btn btn-theme">Previous Page</a>
-				                </div>
-		             		 </li>
-		             	</ul>
+						<h2><span></span> &nbsp;&nbsp;Help us improve our website</h2>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</section>
-	<!-- End of slider-->
+	<!-- End of Slogan -->
+
+
 
 	<!-- Start of footer -->
 	<footer>
@@ -106,7 +86,8 @@
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="#">Weekly discount</a></li>
+						<li><a href="discount_view_img.php">Weekly discount (images)</a></li>
+						<li><a href="discount_view_form.php">Weekly discount (form)</a></li>
 						<li><a href="#">Bookstore</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Career center</a></li>
@@ -151,6 +132,11 @@
 	</div>
 	</footer>
 	<!--End of footer-->
+
+	</div>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+
 	<!-- javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

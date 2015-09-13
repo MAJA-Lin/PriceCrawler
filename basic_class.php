@@ -134,10 +134,56 @@
 		*
 		*
 		*	作法: 刪除月, 日, 括號, dash, 星期幾等等資訊，只留數字(日期), 並按照格式(mm/dd)補上斜線
+		*	博客來:09/14(一)	讀冊:09/07(一)~09/10(四) and 09/07(一)
+		*	灰熊:09月13日		三民:9月14日
+		*	這個版本通用於books.com.tw & taaze; 三民跟灰熊的另外再寫一個(去"月", "日",還要補0)
 		*/
 
 		function stringToDate() {
+			//暴力破解XD
+			$week = array("(一)","(二)", "(三)", "(四)", "(五)", "(六)", "(日)");
+			$blank = "";
+			$tilde = "~";
+			$bar = " - ";
+			for ( $i=0; $i<count($this->book_date); $i++) {
+				for ( $j=0; $j<count($week); $j++) {
+					$this->book_date[$i] = str_replace($week[$j], $blank, $this->book_date[$i]);
+				}
+				//Lenth > 10 --- 資料為一區間(e.g. 09/07(一)~09/10(四))時
+				if(strlen($this->book_date[$i])>10) {
+					$this->book_date[$i] = str_replace($tilde, $bar, $this->book_date[$i]);
+				}
+				//Finally, give variable to book_date
+				//$this->book_date[$i] = $temp;
+			}
 
+		}
+
+
+		/*
+		*	Another version of stringToDate(); This ver is dealing with the word "月", "日"
+		*
+		*
+		*/
+
+		function stringToDate2() {
+
+			$month = "月";
+			$day = "日";
+			for ($i=0; $i<count($this->book_date); $i++) {
+				$mm = split_string($this->book_date[$i], $month, BEFORE, EXCL);
+				$temp = split_string($this->book_date[$i], $month, AFTER, EXCL);
+				$dd = split_string($temp, $day, BEFORE, EXCL);
+
+				if(strlen($mm)<2) {
+					$mm = "0" . $mm;
+				}
+
+				if(strlen($dd)<2) {
+					$dd = "0" . $dd;
+				}
+				$this->book_date[$i] = $mm."/".$dd;
+			}
 		}
 
 
@@ -178,22 +224,104 @@
 		*
 		*/
 
-		function printForm() {
-			
+		function printForm($color) {
+
+			//Initial the array index;
+			$temp = 0;
+			$taaze_tag = 2;
+			$key = count($this->book_date) - 1;
+
+			echo "<div class=\"col-lg-3\">";
+			switch ($color) {
+				//Taaze
+				case 'pink':
+					echo "<div class=\"pricing-box-alt pink\">";
+					echo "<div class=\"pricing-heading\">";
+					echo "<h3>Taaze <strong>讀冊</strong></h3></div>";
+					echo "<div class=\"pricing-terms\"><h6>";
+					//中間夾日期; e.g. : 09/20 ~ 09/27
+					//Taaze 從index 2開始
+					echo $this->book_date[$taaze_tag]." ~ ".$this->book_date[$key];
+					echo "</h6></div>";
+					break;
+
+				case 'green':
+					echo "<div class=\"pricing-box-alt green\">";
+					echo "<div class=\"pricing-heading\">";
+					echo "<h3>博 <strong>客來</strong></h3></div>";
+					echo "<div class=\"pricing-terms\"><h6>";
+					//中間夾日期; e.g. : 09/20 ~ 09/27
+					echo $this->book_date[$temp]." ~ ".$this->book_date[$key];
+					echo "</h6></div>";
+					break;
+				case 'purple':
+					echo "<div class=\"pricing-box-alt purple\">";
+					echo "<div class=\"pricing-heading\">";
+					echo "<h3>三民 <strong>Sanmin</strong></h3></div>";
+					echo "<div class=\"pricing-terms\"><h6>";
+					//中間夾日期; e.g. : 09/20 ~ 09/27
+					echo $this->book_date[$temp]." ~ ".$this->book_date[$key];
+					echo "</h6></div>";
+					break;
+				case 'orange':
+					echo "<div class=\"pricing-box-alt orange\">";
+					echo "<div class=\"pricing-heading\">";
+					echo "<h3>灰熊 <strong>iRead</strong></h3></div>";
+					echo "<div class=\"pricing-terms\"><h6>";
+					//中間夾日期; e.g. : 09/20 ~ 09/27
+					echo $this->book_date[$temp]." ~ ".$this->book_date[$key];
+					echo "</h6></div>";
+					break;
+				default:
+					echo "<div class=\"pricing-box-alt \">";
+					echo "<div class=\"pricing-heading\">";
+					echo "<h3>No <strong>Data</strong></h3></div>";
+					echo "<div class=\"pricing-terms\"><h6>";
+					//中間夾日期; e.g. : 09/20 ~ 09/27
+					echo $this->book_date[$temp]." ~ ".$this->book_date[$key];
+					echo "</h6></div>";
+					break;
+			}
+
+			echo "<div class=\"pricing-content\"><ul>";
+			// Display book name here
+			for ($i=0; $i<count($this->book_date); $i++) {
+				echo "<li><a href=\"".$this->book_link[$i];
+				echo "\"><i class=\"icon-ok\"></i> ";
+				echo $this->book_name[$i]."</a></li>";
+				//<a href=""></a>
+			}
+			// End of name display
+			echo "</ul></div>";
+			echo "<div class=\"pricing-action\">";
+			echo "<a href=\"".$this->target;
+			echo "\" class=\"btn btn-medium btn-theme\"><i class=\"icon-bolt\"></i> Learn more</a></div></div></div>";
+
 		}
 
 		/*
-		<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 design" data-id="id-0" data-type="taaze">
-							<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-							<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Taaze" href="src/img/taaze_logo.jpg">
-								<span class="overlay-img">Date: 0915</span>
-								<span class="overlay-img-thumb font-icon-plus"></span>
-							</a>
-							<!-- Thumb Image and Description -->
-							<img src="src/img/taaze_logo.jpg" height="230" width="230" alt="Simple text">
-						</li>
-						<!-- End Item Project -->
+		<div class="col-lg-3">
+				<div class="pricing-box-alt pink">
+					<div class="pricing-heading">
+						<h3>Taaze <strong>讀冊</strong></h3>
+					</div>
+					<div class="pricing-terms">
+						<h6>&#36;15.00 / Month</h6>
+					</div>
+					<div class="pricing-content">
+						<ul>
+							<li><i class="icon-ok"></i> 100 applications</li>
+							<li><i class="icon-ok"></i> 24x7 support available</li>
+							<li><i class="icon-ok"></i> No hidden fees</li>
+							<li><i class="icon-ok"></i> Free 30-days trial</li>
+							<li><i class="icon-ok"></i> Stop anytime easily</li>
+						</ul>
+					</div>
+					<div class="pricing-action">
+						<a href="#" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Learn more</a>
+					</div>
+				</div>
+			</div>
 		*/
 
 	}

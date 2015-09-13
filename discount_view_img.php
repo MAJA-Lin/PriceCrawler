@@ -53,9 +53,9 @@
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
                             	Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Weekly-discount</a></li>
-                                <li><a href="#">Media</a></li>
-								<li><a href="#">GitHub Page</a></li>
+                                <li><a href="discount_view_img.php">Discount (Image)</a></li>
+                                <li><a href="discount_view_form.php">Discount (Form)</a></li>
+								<li><a href="#">Search</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
@@ -133,11 +133,12 @@
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
-						<li><a href="#">Weekly discount</a></li>
+						<li><a href="discount_view_img.php">Weekly discount (images)</a></li>
+						<li><a href="discount_view_form.php">Weekly discount (form)</a></li>
 						<li><a href="#">Bookstore</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
+						<li><a href="contact.html">Contact us</a></li>
 					</ul>
 				</div>
 			</div>
