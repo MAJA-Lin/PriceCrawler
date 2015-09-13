@@ -1,27 +1,10 @@
-<?php
-	include_once "discount_book.php";
-	$i = 0;
-	$tag_books = "bookscom";
-	$tag_taaze = "taaze";
-	$tag_sanmin = "sanmin";
-	$tag_iread = "iread";
-	/*
-	var_dump($bookscom);
-	var_dump($taazecom);
-	var_dump($sanmincom);
-	*/
-	//Due to the picture display problem, use taaze logo instead of their own books img on taaze.com.tw
-	$taazecom->setImage();
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Weekly discount</title>
+	<title>Price Crawler | Search</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Shows weekly discount books with form" />
+	<meta name="description" content="Search the lowest Price!" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
 	<link href="src/moderna/css/bootstrap.min.css" rel="stylesheet" />
@@ -65,48 +48,40 @@
         </div>
 	</header>
 	<!-- end header -->
-
-	<!-- Start of inner headline -->
+	<!-- Headline -->
 	<section id="inner-headline">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="breadcrumb">
 					<li><a href="index.php"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li><a href="#">Weekly discount</a><i class="icon-angle-right"></i></li>
-					<li class="active">Form viewing</li>
+					<li class="active">Search</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	</section>
-	<!-- End of inner headline -->
-	<!-- Start of content-->
-	<section id="content">
-	<div class="container">
-	<!-- divider -->
+	<!-- End of headline -->
+	<!-- Start of search part-->
+	<section class="content">
+		<div class="container">
+		<!-- divider -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="solidline">
 				</div>
 			</div>
 		</div>
-	<!-- end divider -->
-	<!-- Start of form-->
-		<div class="row">
-			<div class="col-lg-12">
-				<h4>Weekly <strong>Discount</strong></h4>
+		<!-- end divider -->
+		<div>
+			<div class="widget">
+					<form class="form-search" action="search_handler.php" method="GET">
+						<input class="form-control" type="text" name="keyword" placeholder="Search...">
+					</form>
 			</div>
-			<?php
-				$taazecom->printForm("pink");
-				$bookscom->printForm("green");
-				$sanmincom->printForm("purple");
-				$ireadcom->printForm("orange");
-			?>
 		</div>
-	</div>
 	</section>
-	<!-- End of form-->
+	<!-- End of search part-->
 
 	<!-- Start of footer -->
 	<footer>
@@ -177,6 +152,7 @@
 
 	</div>
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
 
 	<!-- javascript
     ================================================== -->

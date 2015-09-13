@@ -42,7 +42,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="discount_view_img.php">Discount (Image)</a></li>
                                 <li><a href="discount_view_form.php">Discount (Form)</a></li>
-								<li><a href="#">Search</a></li>
+								<li><a href="search.html">Search</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
@@ -101,7 +101,7 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="discount_book_print.php">Search now</a>
+								<a href="search.html">Search now</a>
 							</div>
 						</div>
 					</div>
@@ -133,7 +133,7 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="#">Contact us</a>
+								<a href="contact.html">Contact us</a>
 							</div>
 						</div>
 					</div>
