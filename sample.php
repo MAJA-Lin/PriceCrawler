@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Sample</title>
-</head>
-<body>
-	<script src="//code.jquery.com/jquery-1.4.2.min.js"></script>
-	<script src="src/js/jquery.lazyload.min.js"></script>
-</body>
-</html>
 <?php
 	include_once "src/LIB_http.php";
 	include_once "src/LIB_parse.php";
@@ -30,7 +19,7 @@
 
 	//2.0 ver
 
-
+		/*
 		$action = "http://search.books.com.tw/exep/prod_search.php";
 		$method = "GET";
 		$ref = "www.google.com";
@@ -38,6 +27,25 @@
 		$data_array['cat'] = "BKA";
 		$reponse = http($action, $ref, $method, $data_array, EXCL_HEAD);
 		print_r($reponse);
+		*/
+
+	class A {
+	    function example() {
+	        echo "I am A::example() and provide basic functionality.<br />\n";
+	    }
+	}
+
+	class B extends A {
+	    function example() {
+	        echo "I am B::example() and provide additional functionality.<br />\n";
+	        parent::example();
+	    }
+	}
+
+	$b = new B;
+
+	// This will call B::example(), which will in turn call A::example().
+	$b->example();
 
 
 

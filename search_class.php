@@ -8,6 +8,8 @@
 	*	看起來跟basic_class.php裡面的 book_info 有九成像, 不過由於不需要book_date這個attribute, 所以還是先宣告一個直接繼承connection_info
 	*		的子類別, 而不是繼承book_info, 變成connection_info的孫類別
 	*
+	*	#UPDATE: 最後還是直接繼承books_info, 類似的地方太多了
+	*
 	*	book_author 跟 publishing_house : 作者與出版社兩項是為了更精確判斷四間網路書店搜尋出來的結果是同一本書(商品)
 	*	store_name 代表目前這項資料是屬於哪個網站的
 	*
@@ -18,13 +20,15 @@
 	*
 	*/
 
-	class search_book_page extends connection_info {
+	class search_book_page extends books_info {
+		/*
 		public $book_name;
 		public $book_price;
 		public $book_label;
 		public $book_discount;
 		public $book_img;
 		public $book_link;
+		*/
 		public $book_author;
 		public $publishing_house;
 		public $store_name;
@@ -62,15 +66,17 @@
 
 
 		function setArray() {
+			parent::setArray();
 			$this->book_name = array();
-			$this->book_price = array();
-			$this->book_label = array();
-			$this->book_discount = array();
 			$this->book_img = array();
-			$this->book_link = array();
 			$this->book_author = array();
 			$this->publishing_house = array();
 			$this->store_name = array();
+		}
+
+		function setAllValue($data, $tag_array) {
+
+
 		}
 	}
 
