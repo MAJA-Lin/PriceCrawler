@@ -101,7 +101,7 @@
 								</p>
 							</div>
 							<div class="box-bottom">
-								<a href="search.html">Search now</a>
+								<a href="404.html">Search now</a>
 							</div>
 						</div>
 					</div>
