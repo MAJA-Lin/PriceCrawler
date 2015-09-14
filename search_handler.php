@@ -23,7 +23,7 @@
 		"link_b" => "rel=\"mid_name\" href=\"",
 		"link_e" => "\" title",
 		"img_b" => "data-original=\"",
-		"img_e" => "&w=",
+		"img_e" => "width=",
 		"date_b" => "出版日期：",
 		"date_e" => "<BR>",
 		"publisher_b" => "\"mid_publish\"",

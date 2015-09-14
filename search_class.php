@@ -99,19 +99,19 @@
 			$comma = "，";
 			$price_b = "<b>";
 			$price_e = "</b>";
+			$img_tag = "&w";
+			$img_lenth = 100;
 
 			for ($i=0; $i<count($this->book_name); $i++) {
 				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
 				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
 				//$this->book_label[$i] = dataCatcher($this->book_label[$i], $tag_array['label_b'], $tag_array['label_e']);
 				//$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
-				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
 				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
 				$this->publishing_house[$i] = dataCatcher($this->publishing_house[$i], $publisher_tag, $tag_array['publisher_e']);
 
 				/*
 				*	price會夾大逗號,去掉之後再作處理
-				*
 				*
 				*/
 				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
@@ -120,6 +120,16 @@
 				     $this->book_price[$i] = split_string($this->book_price[$i], $comma, AFTER, EXCL);
 				}
 				$this->book_price[$i] = dataCatcher($this->book_price[$i], $price_b, $price_e);
+
+				/*
+				*	book_img 有時會出現.gif導致錯誤,在這邊特別拉出來處理
+				*
+				*
+				*/
+				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
+				if (strlen($this->book_img[$i]) > $img_lenth) {
+					$this->book_img[$i] = split_string($this->book_img[$i], $img_tag, BEFORE, EXCL);
+				}
 			}
 
 		}
@@ -146,7 +156,14 @@
 			for ($i=0; $i<count($this->book_name); $i++) {
 
 			echo "<article><div class=\"post-image\"><div class=\"post-heading\">";
-			echo "<h3><a href=\"".$this->book_link[$i]."\">".$this->book_name[$i]."</a></h3>";
+			//<h3><a href="#">This is an example of standard post format</a></h3>
+			echo "<h3><a href=\"".$this->book_link[$i]."\">";
+			echo $this->book_name[$i]."</a></h3></div>";
+			echo "<img src=\"".$this->book_img[$i]."\" alt=\"\" width=\"200\"/></div>";
+			echo "<div class=\"bottom-article\"><ul class=\"meta-post\">";
+			echo "<li><i class=\"icon-calendar\"></i><a href=\"#\">".$this->book_date[$i]."</a></li>";
+			echo "<li><i class=\"icon-user\"></i><a href=\"#\">".$this->publishing_house[$i]."</a></li></ul>";
+			echo "<a href=\"#\" class=\"pull-right\">Continue reading <i class=\"icon-angle-right\"></i></a></div></article>";
 
 			}
 		}
