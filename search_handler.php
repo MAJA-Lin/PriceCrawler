@@ -14,12 +14,12 @@
 	$search_tag_array = [
 		"name_b" => "img class=\"itemcov\" alt=",
 		"name_e" => "\" data-original",
-		"price_b" => "折，<b>",
-		"price_e" => "</b>元</strong>",
+		"price_b" => "優惠價：",
+		"price_e" => "元",
 		"label_b" => "",
 		"label_e" => "",
-		"discount_b" => "優惠價：<strong><b> ",
-		"discount_e" => "</b> 折",
+		"discount_b" => "",
+		"discount_e" => "",
 		"link_b" => "rel=\"mid_name\" href=\"",
 		"link_e" => "\" title",
 		"img_b" => "data-original=\"",
@@ -38,9 +38,9 @@
 	$bookstw_search_result = $bookstw_search->pageParsing();
 	$temp = dataCatcher($bookstw_search_result['FILE'], $tag_b, $tag_e);
 	//$temp = iconv("Big5", "utf-8", $temp);
-	print_r($temp);
+	//print_r($temp);
 	$bookstw_search->setAllValue($temp, $search_tag_array);
-	var_dump($bookstw_search);
+	//var_dump($bookstw_search);
 
 	/*
 	$reponse = http($target, $ref, $method, $data_array, EXCL_HEAD);

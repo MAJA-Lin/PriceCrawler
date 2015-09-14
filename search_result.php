@@ -1,10 +1,15 @@
+<?php
+	include_once "search_handler.php";
+	//Turn off error display
+	ini_set( "display_errors", 0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Price Crawler | Search</title>
+	<title>Price Crawler | Search Result</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Search the lowest Price!" />
+	<meta name="description" content="Display the 1st search, user can decide to read further infomation, which means confirm the search result" />
 	<meta name="author" content="Scott Lin / typhoon31815@gmail.com" />
 	<!-- css -->
 	<link href="src/moderna/css/bootstrap.min.css" rel="stylesheet" />
@@ -55,7 +60,8 @@
 			<div class="col-lg-12">
 				<ul class="breadcrumb">
 					<li><a href="index.php"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">Search</li>
+					<li><a href="search.html">Search</a><i class="icon-angle-right"></i></li>
+					<li class="active">Check the book</li>
 				</ul>
 			</div>
 		</div>
@@ -88,6 +94,37 @@
 			</div>
 		</div>
 	<!-- end divider -->
+	<!-- Display the 1st search result here, and let users choose the book they are looking for-->
+		<div class="row">
+			<div class="col-lg-8">
+				<h2>Check your book</h2>
+					<article>
+						<div class="post-image">
+							<div class="post-heading">
+								<h3><a href="#">This is an example of standard post format</a></h3>
+							</div>
+							<img src="img/dummies/blog/img1.jpg" alt="" />
+						</div>
+						<p>
+							 Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.
+						</p>
+						<div class="bottom-article">
+							<ul class="meta-post">
+								<li><i class="icon-calendar"></i><a href="#"> Mar 23, 2013</a></li>
+								<li><i class="icon-user"></i><a href="#"> Admin</a></li>
+								<li><i class="icon-folder-open"></i><a href="#"> Blog</a></li>
+								<li><i class="icon-comments"></i><a href="#">4 Comments</a></li>
+							</ul>
+							<a href="#" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
+						</div>
+					</article>
+					<?php
+						$bookstw_search->printResult();
+					?>
+			</div>
+		</div>
+
+	<!-- End of 1st search result-->
 	</section>
 	<!-- End of search part-->
 

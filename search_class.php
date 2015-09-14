@@ -2,6 +2,7 @@
 	include_once "src/LIB_http.php";
 	include_once "src/LIB_parse.php";
 	include_once "basic_class.php";
+	//ini_set( "display_errors", 0);
 
 	/*
 	*
@@ -79,7 +80,7 @@
 			$this->book_name = splitColumn($data, $tag_array['name_b'], $tag_array['name_e']);
 			$this->book_price = splitColumn($data, $tag_array['price_b'], $tag_array['price_e']);
 			//$this->book_label = splitColumn($data, $tag_array['label_b'], $tag_array['label_e']);
-			$this->book_discount = splitColumn($data, $tag_array['discount_b'], $tag_array['discount_e']);
+			//$this->book_discount = splitColumn($data, $tag_array['discount_b'], $tag_array['discount_e']);
 			$this->book_link = splitColumn($data, $tag_array['link_b'], $tag_array['link_e']);
 			$this->book_img = splitColumn($data, $tag_array['img_b'], $tag_array['img_e']);
 			$this->book_date = splitColumn($data, $tag_array['date_b'], $tag_array['date_e']);
@@ -87,6 +88,7 @@
 			//$this->book_author = splitColumn($data, $tag_array['author_b'], $tag_array['author_e']);
 
 			$this->cleanValue($tag_array);
+			$this->redir();
 
 
 		}
@@ -94,19 +96,59 @@
 		function cleanValue($tag_array) {
 
 			$publisher_tag = "title=\"";
+			$comma = "，";
+			$price_b = "<b>";
+			$price_e = "</b>";
 
 			for ($i=0; $i<count($this->book_name); $i++) {
 				$this->book_name[$i] = dataCatcher($this->book_name[$i], $tag_array['name_b'], $tag_array['name_e']);
 				$this->book_link[$i] = dataCatcher($this->book_link[$i],  $tag_array['link_b'], $tag_array['link_e']);
-				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
 				//$this->book_label[$i] = dataCatcher($this->book_label[$i], $tag_array['label_b'], $tag_array['label_e']);
-				$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
+				//$this->book_discount[$i] = dataCatcher($this->book_discount[$i], $tag_array['discount_b'], $tag_array['discount_e']);
 				$this->book_img[$i] = dataCatcher($this->book_img[$i], $tag_array['img_b'], $tag_array['img_e']);
 				$this->book_date[$i] = dataCatcher($this->book_date[$i], $tag_array['date_b'], $tag_array['date_e']);
 				$this->publishing_house[$i] = dataCatcher($this->publishing_house[$i], $publisher_tag, $tag_array['publisher_e']);
 
+				/*
+				*	price會夾大逗號,去掉之後再作處理
+				*
+				*
+				*/
+				$this->book_price[$i] = dataCatcher($this->book_price[$i], $tag_array['price_b'], $tag_array['price_e']);
+				if (strpos ($this->book_price[$i], $comma)){
+				     //True
+				     $this->book_price[$i] = split_string($this->book_price[$i], $comma, AFTER, EXCL);
+				}
+				$this->book_price[$i] = dataCatcher($this->book_price[$i], $price_b, $price_e);
 			}
 
+		}
+
+		/*
+		*	Sometimes the link of result will be disconnected; so redirection is important
+		*
+		*
+		*/
+
+		function redir() {
+			$domain = "http://www.books.com.tw/products/";
+			$tag_b = "item=";
+			$tag_e = "&amp";
+
+			for ($i=0; $i<count($this->book_link); $i++) {
+				$this->book_link[$i] = dataCatcher($this->book_link[$i], $tag_b, $tag_e);
+				$this->book_link[$i] = $domain . $this->book_link[$i];
+			}
+		}
+
+		function printResult() {
+
+			for ($i=0; $i<count($this->book_name); $i++) {
+
+			echo "<article><div class=\"post-image\"><div class=\"post-heading\">";
+			echo "<h3><a href=\"".$this->book_link[$i]."\">".$this->book_name[$i]."</a></h3>";
+
+			}
 		}
 	}
 
