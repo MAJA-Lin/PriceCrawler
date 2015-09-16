@@ -47,6 +47,15 @@
 	print_r($reponse);
 	*/
 
+	/*
+	*
+	*	Taaze的搜尋頁面使用javascript進行輸出, 目前無法抓到JS的輸出內容, 先行pass
+	*	三民也是用JS輸出搜尋結果
+	*
+	*
+	*
+	*
+	*/
 
 	function printResult($obj) {
 
@@ -54,10 +63,21 @@
 
 		for ($i=0; $i<count($obj->book_name); $i++) {
 
+			/*
+			*
+			*	暫時放上各個商店搜尋連結代替
+			*
+			*
+			*/
+			$iread = "https://www.iread.com.tw/search_results.aspx?Condition=0&skeyword=".$obj->book_name[$i];
+			$sanmin = "http://www.m.sanmin.com.tw/Search/Index/?ct=K&qu=".$obj->book_name[$i];
+			$taaze = "http://www.taaze.tw/searchmain.html?sty=0&skw=".$obj->book_name[$i];
+
 
 			$match = new search_book_page();
 			$match->setArray();
 			$match->setBookInfo($obj->book_name[$i], $obj->publishing_house[$i]);
+			searchMatch($match);
 
 			//$temp = serialize($this);
 			//var_dump($temp);
@@ -67,39 +87,50 @@
 			echo $obj->book_name[$i]."</a></h3></div>";
 			echo "<img src=\"".$obj->book_img[$i]."\" alt=\"\" width=\"200\"/></div>";
 			echo "<p>";
+			echo "<h4><strong>售價: </strong></h4><br>";
+			echo "<h3><a href=\"".$obj->book_link[$i]."\">博客來</a> : ".$obj->book_price[$i]."<br></h3>";
+			echo "<h3><a href=\"".$taaze."\">讀冊</a><br></h3>";
+			echo "<h3><a href=\"".$iread."\">灰熊</a><br></h3>";
+			echo "<h3><a href=\"".$sanmin."\">三民</a><br></h3>";
 			echo "</p>";
 			echo "<div class=\"bottom-article\"><ul class=\"meta-post\">";
 			echo "<li><i class=\"icon-calendar\"></i><a href=\"#\">".$obj->book_date[$i]."</a></li>";
 			echo "<li><i class=\"icon-user\"></i><a href=\"#\">".$obj->publishing_house[$i]."</a></li></ul>";
-			echo "<a href=\"#\" class=\"pull-right\">Continue reading <i class=\"icon-angle-right\"></i></a></div></article>";
+			echo "<a href=\"#\" class=\"pull-right\"> <i class=\"icon-angle-right\"> #</i></a></div></article>";
 
-			}
 		}
+	}
 
-	function searchMatch() {
+	function searchMatch($match) {
+
+
+		//$taaze = "http://www.taaze.tw/searchmain.html?sty=0&skw=".$match->book_name;
+		/*
+		$taaze_data['keyType'] = "0";
+		$taaze_data['keyword'] = $match->book_name;
+		$taaze_data['prodKind'] = "1";
+		$taaze_data['prodCatId'] = "A";
+		//
+		$taaze_data['sty'] = "0";
+		$taaze_data['skw'] = $match->book_name;
+
+		$data_array = "";
+		$taaze_result = $match->pageParsing($taaze, $data_array);
+
+		print_r($taaze_result);
+		*/
+
+		$iread = "https://www.iread.com.tw/search_results.aspx?Condition=0&skeyword=".$match->book_name;
+		$data_array = "";
+		$iread_result = $match->pageParsing($iread, $data_array);
+
+		//print_r($iread_result);
 
 
 	}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
+
+<a href=""></a>

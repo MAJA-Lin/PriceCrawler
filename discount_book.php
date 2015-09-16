@@ -413,7 +413,7 @@
 		"link_b" => "ProdNameLink\" href=\"",
 		"link_e" => "\">",
 		"img_b" => "<img src=\"ProductFile",
-		"img_e" => "\" border=",
+		"img_e" => "\" style",
 		"date_b" => "<li class=\"Date\">",
 		"date_e" => " <span",
 	];

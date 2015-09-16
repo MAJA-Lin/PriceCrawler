@@ -2,6 +2,7 @@
 	include_once "src/LIB_http.php";
 	include_once "src/LIB_parse.php";
 	include_once "basic_class.php";
+	error_reporting(E_ALL ^ E_STRICT);
 	//ini_set( "display_errors", 0);
 
 	/*
@@ -33,6 +34,19 @@
 		public $book_author;
 		public $publishing_house;
 		public $store_name;
+
+
+		function __construct() {
+			//doing nothing
+		}
+
+		function pageParsing($target, $data_array) {
+			$ref = "";
+			$method = "GET";
+			//$result = http($new_target, $new_ref, $new_method, $data_array, EXCL_HEAD);
+			$result = http($target, $ref, $method, $data_array, EXCL_HEAD);
+			return $result;
+		}
 
 		function setBookInfo($name, $publisher) {
 			$this->book_name = $name;

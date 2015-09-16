@@ -85,7 +85,7 @@ if (!function_exists('curl_init')) {
 # Define how your webbot will appear in server logs
 #define("WEBBOT_NAME", "Test Webbot");
 # Define new webbot name
-define("WEBBOT_NAME", "www.google.com");
+define("WEBBOT_NAME", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
 
 # Length of time cURL will wait for a response (seconds)
 define("CURL_TIMEOUT", 25);

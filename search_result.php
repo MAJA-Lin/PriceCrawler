@@ -101,12 +101,12 @@
 					<article>
 						<div class="post-image">
 							<div class="post-heading">
-								<h3><a href="#">This is an example of standard post format</a></h3>
+								<h3><a href="#">Here are your search results</a></h3>
 							</div>
-							<img src="img/dummies/blog/img1.jpg" alt="" />
+							<!--<img src="#" alt="" />-->
 						</div>
 						<p>
-							 Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.
+							 Select the book you are looking for, click the link to get more information.
 						</p>
 						<div class="bottom-article">
 							<ul class="meta-post">
@@ -115,7 +115,7 @@
 								<li><i class="icon-folder-open"></i><a href="#"> Blog</a></li>
 								<li><i class="icon-comments"></i><a href="#">4 Comments</a></li>
 							</ul>
-							<a href="#" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
+							<a href="#" class="pull-right"> <i class="icon-angle-right"></i></a>
 						</div>
 					</article>
 					<?php
