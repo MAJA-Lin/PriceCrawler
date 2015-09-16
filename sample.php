@@ -59,11 +59,58 @@
 		print_r($result2);
 		*/
 
+		class C {
+		    public $v = 1;
+		}
+
+		function change($obj) {
+		    $obj->v = 2;
+		}
+
+		function makezero($obj) {
+		    $obj = 0;
+		}
+
+		$a = new C();
+
+		var_dump($a);
+
+		change($a);
+
+		var_dump($a); 
+
+		/* 
+		output:
+
+		object(A)#1 (1) {
+		  ["v"]=>
+		  int(2)
+		}
+
+		*/
+
+		makezero($a);
+
+		var_dump($a);
+
+		/* 
+		output (same as before):
+
+		object(A)#1 (1) {
+		  ["v"]=>
+		  int(2)
+		}
+
+		*/
 
 
 		$test = "<br>I'm A <br> Doctor <br> U know<br>?";
 		$test = remove($test, "<b", "r>");
 		$test = xmpTag($test);
 		echo $test;
+
+		echo "<a href=\"test.php\" method=\"GET\" value=\"$test\">Here</a>";
+		//echo "<form action=\"test.php\" method=\"GET\">
+		//	<input type=\"hiden\" name=\"firstname\" value=\"$test\">Here</form>";
 
 ?>

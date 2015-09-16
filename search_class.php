@@ -34,11 +34,11 @@
 		public $publishing_house;
 		public $store_name;
 
-		function setBookInfo($name, $author, $publisher, $img) {
+		function setBookInfo($name, $publisher) {
 			$this->book_name = $name;
-			$this->book_author = $author;
+			//$this->book_author = $author;
 			$this->publishing_house = $publisher;
-			$this->book_img = $img;
+			//$this->book_img = $img;
 		}
 
 
@@ -55,6 +55,10 @@
 			$this->store_name = array();
 		}
 
+		function setStore($store) {
+			//$this->store_name
+		}
+
 	}
 
 	/*
@@ -62,14 +66,17 @@
 	*
 	*
 	*/
-	class search_book_result extends search_book_page {
+	class search_book_result extends book_info {
 
+		public $book_author;
+		public $publishing_house;
+		public $store_name;
 
 
 		function setArray() {
 			parent::setArray();
-			$this->book_name = array();
-			$this->book_img = array();
+			//$this->book_name = array();
+			//$this->book_img = array();
 			$this->book_author = array();
 			$this->publishing_house = array();
 			//$this->store_name = array();
@@ -151,22 +158,26 @@
 			}
 		}
 
+		/*
 		function printResult() {
 
 			for ($i=0; $i<count($this->book_name); $i++) {
 
-			echo "<article><div class=\"post-image\"><div class=\"post-heading\">";
-			//<h3><a href="#">This is an example of standard post format</a></h3>
-			echo "<h3><a href=\"".$this->book_link[$i]."\">";
-			echo $this->book_name[$i]."</a></h3></div>";
-			echo "<img src=\"".$this->book_img[$i]."\" alt=\"\" width=\"200\"/></div>";
-			echo "<div class=\"bottom-article\"><ul class=\"meta-post\">";
-			echo "<li><i class=\"icon-calendar\"></i><a href=\"#\">".$this->book_date[$i]."</a></li>";
-			echo "<li><i class=\"icon-user\"></i><a href=\"#\">".$this->publishing_house[$i]."</a></li></ul>";
-			echo "<a href=\"#\" class=\"pull-right\">Continue reading <i class=\"icon-angle-right\"></i></a></div></article>";
+				//$temp = serialize($this);
+				//var_dump($temp);
+				echo "<article><div class=\"post-image\"><div class=\"post-heading\">";
+				//<h3><a href="#">This is an example of standard post format</a></h3>
+				echo "<h3><a href=\"\">";
+				echo $this->book_name[$i]."</a></h3></div>";
+				echo "<img src=\"".$this->book_img[$i]."\" alt=\"\" width=\"200\"/></div>";
+				echo "<div class=\"bottom-article\"><ul class=\"meta-post\">";
+				echo "<li><i class=\"icon-calendar\"></i><a href=\"#\">".$this->book_date[$i]."</a></li>";
+				echo "<li><i class=\"icon-user\"></i><a href=\"#\">".$this->publishing_house[$i]."</a></li></ul>";
+				echo "<a href=\"#\" class=\"pull-right\">Continue reading <i class=\"icon-angle-right\"></i></a></div></article>";
 
 			}
 		}
+		*/
 	}
 
 ?>

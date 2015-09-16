@@ -119,7 +119,7 @@
 						</div>
 					</article>
 					<?php
-						$bookstw_search->printResult();
+						printResult($bookstw_search);
 					?>
 			</div>
 		</div>

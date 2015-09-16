@@ -12,7 +12,7 @@
 	$tag_b = "<!--搜尋結果商品 始-->";
 	$tag_e = "<!--搜尋結果商品 止-->";
 	$search_tag_array = [
-		"name_b" => "img class=\"itemcov\" alt=",
+		"name_b" => "img class=\"itemcov\" alt=\"",
 		"name_e" => "\" data-original",
 		"price_b" => "優惠價：",
 		"price_e" => "元",
@@ -47,6 +47,39 @@
 	print_r($reponse);
 	*/
 
+
+	function printResult($obj) {
+
+
+
+		for ($i=0; $i<count($obj->book_name); $i++) {
+
+
+			$match = new search_book_page();
+			$match->setArray();
+			$match->setBookInfo($obj->book_name[$i], $obj->publishing_house[$i]);
+
+			//$temp = serialize($this);
+			//var_dump($temp);
+			echo "<article><div class=\"post-image\"><div class=\"post-heading\">";
+			//<h3><a href="#">This is an example of standard post format</a></h3>
+			echo "<h3><a href=\"\">";
+			echo $obj->book_name[$i]."</a></h3></div>";
+			echo "<img src=\"".$obj->book_img[$i]."\" alt=\"\" width=\"200\"/></div>";
+			echo "<p>";
+			echo "</p>";
+			echo "<div class=\"bottom-article\"><ul class=\"meta-post\">";
+			echo "<li><i class=\"icon-calendar\"></i><a href=\"#\">".$obj->book_date[$i]."</a></li>";
+			echo "<li><i class=\"icon-user\"></i><a href=\"#\">".$obj->publishing_house[$i]."</a></li></ul>";
+			echo "<a href=\"#\" class=\"pull-right\">Continue reading <i class=\"icon-angle-right\"></i></a></div></article>";
+
+			}
+		}
+
+	function searchMatch() {
+
+
+	}
 
 
 
