@@ -1,12 +1,4 @@
-# PriceCrawler
-<p>This is a web application that crawling the lowest price of the book in Taiwan's bookstore website<p>
+TEMP
+====
 
-## Languages / Tools:
-PHP, Bootstrap, Moderna Template, and Michael Schrenk's webbot library.
-
-
-## Demonstration
-* [Heroku Link (※Recommended) ](http://safe-shelf-6136.herokuapp.com/)
-* [Google App Engine Link](http://pricecrawler-maja.appspot.com/)
-* [OpenShift Link](http://pricecrawler-optmobile.rhcloud.com/)
-
+A Symfony project created on March 15, 2016, 6:42 am.
