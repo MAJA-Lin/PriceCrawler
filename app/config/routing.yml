@@ -2,7 +2,3 @@ price_crawler:
     resource: "@PriceCrawlerBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
