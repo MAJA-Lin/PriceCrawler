@@ -179,7 +179,7 @@ class Parse
     public function get_attribute($tag, $attribute)
     {
         # Use Tidy library to 'clean' input
-        $cleaned_html = tidy_html($tag);
+        $cleaned_html = $this->tidy_html($tag);
 
         # Remove all line feeds from the string
         $cleaned_html = str_replace("\r", "", $cleaned_html);
@@ -234,13 +234,14 @@ class Parse
                 tidy_setopt('wrap', 800);
                 tidy_parse_string($input_string);
                 $cleaned_html = tidy_get_output();
+
             }
             # Tidy for PHP version 5
-            if (mb_substr(phpversion(), 0, 1) == 5) {
+            if (mb_substr(phpversion(), 0, 1) >= 5) {
                 $config = array(
                    'uppercase-attributes' => true,
                    'wrap'                 => 800);
-                $tidy = new tidy;
+                $tidy = new \tidy;
                 $tidy->parseString($input_string, $config, 'utf8');
                 $tidy->cleanRepair();
                 $cleaned_html  = tidy_get_output($tidy);
