@@ -78,8 +78,8 @@ class BookController extends Controller
                     "discount_end" => "</span>折",
                     "book_link_begin" => "\"#CCCCCC\"><a href=\"",
                     "book_link_end" => "\" target",
-                    "img_begin" => "blank\"><img src",
-                    "img_end" => "width=\"90\"",
+                    "img_begin" => "blank\"><img src=\"",
+                    "img_end" => "\" width=\"90\"",
                     "date_begin" => "<span class=\"date\">",
                     "date_end" => "</span></td>",
                 ],
@@ -188,6 +188,6 @@ class BookController extends Controller
      */
     public function bookstoreDiscountAction(Request $request)
     {
-        
+
     }
 }
