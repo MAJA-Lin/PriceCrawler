@@ -224,6 +224,7 @@ class WeekDiscount
                 $value['date'], $this->tags['date_begin'], $this->tags['date_end'], EXCL
             );
 
+            // 三民與灰熊的資料不包含標價, 所以這邊要排除掉
             // Raw data of Sanmin doesn't contain label price
             if ($this->source != "sanmin" && $this->source != "iread") {
                 $this->bookInfo[$key]['label'] = $this->parse->return_between(
