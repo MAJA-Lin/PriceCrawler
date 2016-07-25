@@ -15,10 +15,16 @@ class BookController extends Controller
 {
     /**
      * @Route("/book")
+     *
+     * @Method("GET")
      */
     public function bookMenuAction(Request $request)
     {
-
+        $result = [
+            'status' => 'successful',
+            'data' => 'HELLO',
+        ];
+        return new JsonResponse($result);
     }
 
     /**
