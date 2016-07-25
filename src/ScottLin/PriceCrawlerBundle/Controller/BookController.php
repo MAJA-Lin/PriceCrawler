@@ -30,7 +30,7 @@ class BookController extends Controller
      * @Route(
      *      "/book/discount/week/{source}",
      *      name="discount_week_update",
-     *      requirements={"source" : "bookscom|taaze|sanmin|kingstone|iread"})
+     *      requirements={"source" : "bookscom|taaze|sanmin|iread"})
      *
      * @Method("PUT")
      */
@@ -194,7 +194,7 @@ class BookController extends Controller
      * @Route(
      *      "/book/discount/week/{source}",
      *      name="discount_week",
-     *      requirements={"source" : "bookscom|taaze|sanmin|kingstone|iread"})
+     *      requirements={"source" : "bookscom|taaze|sanmin|iread"})
      *
      * @Method("GET")
      */
