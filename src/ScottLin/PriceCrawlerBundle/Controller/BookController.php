@@ -43,7 +43,7 @@ class BookController extends Controller
         try {
 
             Autoloader::register();
-            $redis = new Client();
+            $redis = new Client(getenv('REDIS_URL'));
 
             $discountParsing = $this->get('scottlin_pricecrawler.discountparsing');
             $discountParsing->setSource($source);
@@ -82,7 +82,7 @@ class BookController extends Controller
     {
         try {
             Autoloader::register();
-            $redis = new Client();
+            $redis = new Client(getenv('REDIS_URL'));
 
             $page = $redis->get($source);
             if (empty($page) || is_null($page)) {

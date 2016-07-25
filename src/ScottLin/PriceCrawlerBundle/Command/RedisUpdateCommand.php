@@ -31,7 +31,7 @@ class RedisUpdateCommand extends ContainerAwareCommand
 
         try {
             Autoloader::register();
-            $redis = new Client();
+            $redis = new Client(getenv('REDIS_URL'));
             $source = ["bookscom", "taaze", "sanmin", "iread"];
 
             $discountParsing = $this->getContainer()->get('scottlin_pricecrawler.discountparsing');
