@@ -6,7 +6,7 @@ var app = angular.module('App', []),
     service = server.concat(api.concat(source));
 
 app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
-    $http.jsonp(service, {withCredentials: true}).then(function(response){
+    $http.get(service, {withCredentials: true}).then(function(response){
         console.log(response)
             var status = response.data.status,
                 data = response.data.data;
