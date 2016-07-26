@@ -14,20 +14,6 @@ use Predis\Client;
 class BookController extends Controller
 {
     /**
-     * @Route("/book")
-     *
-     * @Method("GET")
-     */
-    public function bookMenuAction(Request $request)
-    {
-        $result = [
-            'status' => 'successful',
-            'data' => 'HELLO',
-        ];
-        return new JsonResponse($result);
-    }
-
-    /**
      * Get weekly discount book infomation and save it to redis.
      *
      * @Route(
@@ -114,16 +100,5 @@ class BookController extends Controller
             ];
         }
         return new JsonResponse($result);
-    }
-
-
-    /**
-     * @Route("/book/discount/bookstore", name="discount_beginookstore")
-     *
-     * @Method("GET")
-     */
-    public function bookstoreDiscountAction(Request $request)
-    {
-
     }
 }
