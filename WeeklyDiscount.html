@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="App">
+    <head>
+        <title>Weekly Discount Info of books</title>
+        <meta charset="utf-8" />
+    </head>
+    <body ng-controller="Ctrl">
+        <script src="public/assets/js/angular.min.js" ></script>
+        <script src="public/assets/js/getWeeklyDiscount.js"></script>
+
+        <div>
+            <ui ng-repeat="data in Data">
+                <strong> {{data}} </strong>
+            </ui>
+        </div>
+
+
+        <script src="public/assets/js/jquery.min.js"></script>
+        <script src="public/assets/js/jquery.poptrox.min.js"></script>
+    </body>
+</html>
