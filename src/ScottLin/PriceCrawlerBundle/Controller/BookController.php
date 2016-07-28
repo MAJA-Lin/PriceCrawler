@@ -66,6 +66,8 @@ class BookController extends Controller
      */
     public function weeklyDiscountAction(Request $request, $source)
     {
+        header("Access-Control-Allow-Origin: https://maja-lin.github.io");
+
         try {
             Autoloader::register();
             $redis = new Client();
