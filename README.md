@@ -5,7 +5,7 @@ A restful app that parse book discount information from bookstore in Taiwan.
 This project is based on Symfony 3.0.
 
 
-[DEMO]()
+[DEMO](http://maja-lin.github.io/PriceCrawler/WeeklyDiscount.html)
 
 ## Prerequisite
 +   php >= 5.5
