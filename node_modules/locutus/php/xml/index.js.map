@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/php/xml/index.js"],"names":[],"mappings":";;AAAA,OAAO,OAAP,CAAe,aAAf,IAAgC,QAAQ,eAAR,CAAhC;AACA,OAAO,OAAP,CAAe,aAAf,IAAgC,QAAQ,eAAR,CAAhC","file":"index.js","sourcesContent":["module.exports['utf8_decode'] = require('./utf8_decode')\nmodule.exports['utf8_encode'] = require('./utf8_encode')\n"]}

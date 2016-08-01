@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/php/xdiff/index.js"],"names":[],"mappings":";;AAAA,OAAO,OAAP,CAAe,mBAAf,IAAsC,QAAQ,qBAAR,CAAtC;AACA,OAAO,OAAP,CAAe,oBAAf,IAAuC,QAAQ,sBAAR,CAAvC","file":"index.js","sourcesContent":["module.exports['xdiff_string_diff'] = require('./xdiff_string_diff')\nmodule.exports['xdiff_string_patch'] = require('./xdiff_string_patch')\n"]}
