@@ -65,7 +65,7 @@ class BookController extends Controller
      */
     public function weeklyDiscountAction(Request $request, $source)
     {
-        header('Access-Control-Allow-Origin: http://maja-lin.github.io/');
+        header('Access-Control-Allow-Origin: http://maja-lin.github.io');
         header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
         header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept');
         header('Access-Control-Allow-Credentials: true');
