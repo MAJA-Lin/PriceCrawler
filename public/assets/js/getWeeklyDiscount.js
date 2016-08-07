@@ -1,21 +1,32 @@
-
-require('locutus/php/var/unserialize');
-
 var app = angular.module('App', []),
     server = "https://safe-shelf-6136.herokuapp.com",
     api = "/book/discount/week/",
-    source = "taaze",
-    service = server.concat(api.concat(source));
+    source = [
+        "taaze",
+        "bookscom",
+        "sanmin",
+        "iread"
+    ],
+    index = 0,
+    unserialize = require('locutus/php/var/unserialize');
 
 app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
-    $http.get(service, {withCredentials: true}).then(function(response){
-        console.log(response)
-            var status = response.data.status,
-                data = response.data.data;
-            if (status != undefined || status == 'successful') {
-                $scope.Data = unserialize(decodeURIComponent(data));
-                console.log($scope.Data);
+    for (val of source) {
+        var service = server.concat(api.concat(val));
 
-            }
-    })
+        $http.get(service, {withCredentials: true}).then(function(response){
+            console.log(response)
+                var status = response.data.status,
+                    data = response.data.data;
+                if (status != undefined || status == 'successful') {
+                    var clearData = unserialize(decodeURIComponent(data));
+                    if (index == 0) {
+                        $scope.Data = [];
+                    }
+                    $scope.Data.push(clearData);
+                    console.log($scope.Data);
+                    index++;
+                }
+        })
+    }
 }])
