@@ -8,7 +8,8 @@ var app = angular.module('App', []),
         "iread"
     ],
     index = 0,
-    unserialize = require('locutus/php/var/unserialize');
+    unserialize = require('locutus/php/var/unserialize'),
+    phpUnserialize = require('phpUnserialize/phpUnserialize');
 
 app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
     for (val of source) {
@@ -19,7 +20,12 @@ app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
                 var status = response.data.status,
                     data = response.data.data;
                 if (status != undefined || status == 'successful') {
-                    var clearData = unserialize(decodeURIComponent(data));
+                    if (val == "iread") {
+                        var clearData = phpUnserialize(decodeURIComponent(data));
+                    } else {
+                        var clearData = unserialize(decodeURIComponent(data));
+                    }
+
                     if (index == 0) {
                         $scope.Data = [];
                     }
