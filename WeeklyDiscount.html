@@ -8,10 +8,55 @@
         <script src="public/assets/js/angular.min.js" ></script>
         <script src="public/assets/js/getWeeklyDiscount_browserify.js"></script>
 
-        <div>
-            <ui ng-repeat="data in Data">
-                <strong> {{data}} </strong>
-            </ui>
+        <div id="books">
+            <strong>讀冊</strong>
+            <ul ng-repeat="data in Data[0]">
+                <li> {{data.bookName}} </li>
+                <li><img src="{{data.img}}" alt=""></li>
+                <li>書名: {{data.bookName}}</li>
+                <li>日期: {{data.date}}</li>
+                <li>折數: {{data.discount}} 折</li>
+                <li>售價: {{data.label}}</li>
+                <li>特價: {{data.price}}</li>
+                <li><a href="{{data.link}}">詳細資訊</a></li>
+            </ul>
+            <br><br>
+            <strong>博客來</strong>
+            <ul ng-repeat="data in Data[1]">
+                <li> {{data.bookName}} </li>
+                <li><img src="{{data.img}}" alt=""></li>
+                <li>書名: {{data.bookName}}</li>
+                <li>日期: {{data.date}}</li>
+                <li>折數: {{data.discount}} 折</li>
+                <li>售價: {{data.label}}</li>
+                <li>特價: {{data.price}}</li>
+                <li><a href="{{data.link}}">詳細資訊</a></li>
+            </ul>
+            <br><br>
+            <strong>三民</strong>
+            <ul ng-repeat="data in Data[2]">
+                <li> {{data.bookName}} </li>
+                <li><img src="{{data.img}}" alt=""></li>
+                <li>書名: {{data.bookName}}</li>
+                <li>日期: {{data.date}}</li>
+                <li>折數: {{data.discount}} 折</li>
+                <li>售價: {{data.label}}</li>
+                <li>特價: {{data.price}}</li>
+                <li><a href="{{data.link}}">詳細資訊</a></li>
+            </ul>
+            <br><br>
+            <strong>灰熊</strong>
+            <ul ng-repeat="data in Data[3]">
+                <li> {{data.bookName}} </li>
+                <li><img src="{{data.img}}" alt=""></li>
+                <li>書名: {{data.bookName}}</li>
+                <li>日期: {{data.date}}</li>
+                <li>折數: {{data.discount}} 折</li>
+                <li>售價: {{data.label}}</li>
+                <li>特價: {{data.price}}</li>
+                <li><a href="{{data.link}}">詳細資訊</a></li>
+            </ul>
+            <br><br>
         </div>
 
 

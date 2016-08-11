@@ -7,11 +7,12 @@ var app = angular.module('App', []),
         "sanmin",
         "iread"
     ],
-    index = 0,
     unserialize = require('locutus/php/var/unserialize'),
     phpUnserialize = require('phpUnserialize/phpUnserialize');
 
 app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.Data = [];
+
     for (val of source) {
         var service = server.concat(api.concat(val));
 
@@ -26,12 +27,8 @@ app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
                         var clearData = unserialize(decodeURIComponent(data));
                     }
 
-                    if (index == 0) {
-                        $scope.Data = [];
-                    }
                     $scope.Data.push(clearData);
                     console.log($scope.Data);
-                    index++;
                 }
         })
     }
