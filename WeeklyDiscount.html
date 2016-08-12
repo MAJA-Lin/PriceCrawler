@@ -3,11 +3,12 @@
     <head>
         <title>Weekly Discount Info of books</title>
         <meta charset="utf-8" />
-    </head>
-    <body ng-controller="Ctrl">
+        <script src="public/assets/js/pace.min.js" ></script>
+        <link href="public/assets/css/pace-theme-loading-bar.css" rel="stylesheet" />
         <script src="public/assets/js/angular.min.js" ></script>
         <script src="public/assets/js/getWeeklyDiscount_browserify.js"></script>
-
+    </head>
+    <body ng-controller="Ctrl">
         <div id="books">
             <strong>讀冊</strong>
             <ul ng-repeat="data in Data[0]">
@@ -58,8 +59,6 @@
             </ul>
             <br><br>
         </div>
-
-
         <script src="public/assets/js/jquery.min.js"></script>
         <script src="public/assets/js/jquery.poptrox.min.js"></script>
     </body>
