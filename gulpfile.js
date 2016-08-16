@@ -1,6 +1,7 @@
 // Assigning modules to local variables
 var gulp = require('gulp');
 var less = require('gulp-less');
+var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
@@ -26,6 +27,17 @@ gulp.task('less', function() {
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('public/assets/css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
+// Sass task to compile the sass files and add the banner
+gulp.task('sass', function() {
+    return gulp.src('public/vendor/image-grid/image-grid.scss')
+        .pipe(sass())
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(gulp.dest('public/vendor/image-grid/'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -104,8 +116,9 @@ gulp.task('browserSync', function() {
 })
 
 // Watch Task that compiles LESS and watches for HTML or JS changes and reloads with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', ['browserSync', 'less', 'sass', 'minify-css', 'minify-js'], function() {
     gulp.watch('public/assets/less/*.less', ['less']);
+    gulp.watch('public/vendor/image-grid/*.scss', ['sass']);
     gulp.watch('public/assets/css/*.css', ['minify-css']);
     gulp.watch('public/assets/js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change

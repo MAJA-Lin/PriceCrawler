@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="cache-control" content="must-revalidate">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="A Single-Page Application that list the weekly discount of books in Taiwan.">
         <meta name="author" content="Scott Lin">
@@ -20,7 +21,10 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' type='text/css'>
 
         <!-- Plugin CSS -->
-        <link href="public/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+        <link rel="stylesheet" href="public/vendor/magnific-popup/magnific-popup.css">
+        <link rel="stylesheet" href="public/vendor/CaptionHoverEffects/css/component.css">
+        <link rel="stylesheet" href="public/vendor/CaptionHoverEffects/css/default.css">
+        <script src="public/vendor/CaptionHoverEffects/js/modernizr.custom.js"></script>
 
         <!-- Theme CSS -->
         <link href="public/assets/css/creative.min.css" rel="stylesheet">
@@ -57,13 +61,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
+                            <a class="page-scroll" href="#discount">Discount</a>
+                        </li>
+                        <li>
                             <a class="page-scroll" href="#about">About</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#portfolio">Discount</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -78,87 +79,120 @@
                     <h1 id="homeHeading">Specail book discount every week</h1>
                     <hr>
                     <p>PriceCrawler is a service that provide weekly discount information of books in Taiwan.</p>
-                    <a href="#about" class="btn btn-primary btn-xl page-scroll">Check today's discount</a>
+                    <a href="#discount" class="btn btn-primary btn-xl page-scroll">Check today's discount</a>
                 </div>
             </div>
         </header>
 
-        <section class="no-padding" id="portfolio">
-            <div class="container-fluid">
-                <div class="row no-gutter popup-gallery">
-                    <div ng-repeat="data in Data[0]">
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{data.img}}" class="portfolio-box">
-                                <img src="{{data.img}}" class="img-responsive" alt="">
-                                <div class="portfolio-box-caption">
-                                    <div class="portfolio-box-caption-content">
-                                        <div class="project-category text-faded">
-                                            {{data.date}}
-                                        </div>
-                                        <div class="project-name">
-                                            {{data.bookName}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div ng-repeat="data in Data[1]">
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{data.img}}" class="portfolio-box">
-                                <img src="{{data.img}}" class="img-responsive" alt="">
-                                <div class="portfolio-box-caption">
-                                    <div class="portfolio-box-caption-content">
-                                        <div class="project-category text-faded">
-                                            {{data.date}}
-                                        </div>
-                                        <div class="project-name">
-                                            {{data.bookName}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div ng-repeat="data in Data[2]">
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{data.img}}" class="portfolio-box">
-                                <img src="{{data.img}}" class="img-responsive" alt="">
-                                <div class="portfolio-box-caption">
-                                    <div class="portfolio-box-caption-content">
-                                        <div class="project-category text-faded">
-                                            {{data.date}}
-                                        </div>
-                                        <div class="project-name">
-                                            {{data.bookName}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div ng-repeat="data in Data[3]">
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="{{data.img}}" class="portfolio-box">
-                                <img src="{{data.img}}" class="img-responsive" alt="">
-                                <div class="portfolio-box-caption">
-                                    <div class="portfolio-box-caption-content">
-                                        <div class="project-category text-faded">
-                                            {{data.date}}
-                                        </div>
-                                        <div class="project-name">
-                                            {{data.bookName}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+        <section class="no-padding bg-third" id="discount">
+            <div class="container demo-1">
+                <ul class="grid cs-style-1" ng-repeat="data in Data[0]">
+                    <li class="col-lg-3 col-sm-6">
+                        <figure>
+                            <img src="{{data.img}}" alt="" width="240" height="360">
+                            <figcaption>
+                                <h3>{{data.date}}</h3>
+                                <span>{{data.bookName}} <br>
+                                特價: {{data.price}} 元<br>
+                                折數: {{data.discount}} 折<br>
+                                </span>
+                                <a href="{{data.link}}" target="_blank">Go</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+            </div>
+            <div class="container demo-3">
+                <ul class="grid cs-style-4" ng-repeat="data in Data[1]">
+                    <li class="col-lg-3 col-sm-6">
+                        <figure><img src="{{data.img}}" alt="" width="240" height="360">
+                                <figcaption>
+                                    <h3>{{data.date}}</h3>
+                                    <span>{{data.bookName}} <br>
+                                    特價: {{data.price}} 元<br>
+                                    折數: {{data.discount}} 折<br>
+                                    </span>
+                                    <a href="{{data.link}}" target="_blank">Go</a>
+                                </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="container demo-1">
+                <ul class="grid cs-style-1" ng-repeat="data in Data[2]">
+                    <li class="col-lg-3 col-sm-6">
+                        <figure>
+                            <img src="{{data.img}}" alt="" width="240" height="360">
+                            <figcaption>
+                                <h3>{{data.date}}</h3>
+                                <span>{{data.bookName}} <br>
+                                特價: {{data.price}} 元<br>
+                                折數: {{data.discount}} 折<br>
+                                </span>
+                                <a href="{{data.link}}" target="_blank">Go</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+            </div>
+            <div class="container demo-1">
+                <ul class="grid cs-style-1" ng-repeat="data in Data[3]">
+                    <li class="col-lg-3 col-sm-6">
+                        <figure>
+                            <img src="{{data.img}}" alt="" width="240" height="360">
+                            <figcaption>
+                                <h3>{{data.date}}</h3>
+                                <span>{{data.bookName}} <br>
+                                特價: {{data.price}} 元<br>
+                                折數: {{data.discount}} 折<br>
+                                </span>
+                                <a href="{{data.link}}" target="_blank">Go</a>
+                            </figcaption>
+                        </figure>
+                    </li>
             </div>
         </section>
 
+        <section class="bg-second" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">About</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-github text-primary sr-icons"></i>
+                            <a href="https://github.com/MAJA-Lin"><h3>Github</h3></a>
+                            <p class="text-muted">Check my github profile.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-code-fork text-primary sr-icons"></i>
+                            <a href="https://github.com/MAJA-Lin/PriceCrawler"><h3>Fork</h3></a>
+                            <p class="text-muted">You can fork whole project here.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-hand-spock-o text-primary sr-icons"></i>
+                            <h3>Peace</h3>
+                            <p class="text-muted">Long live and prosper.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-music text-primary sr-icons"></i>
+                            <h3>Music</h3>
+                            <p class="text-muted">The favicon is inspired by 8th note.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- jQuery -->
         <script src="public/vendor/jquery/jquery.min-1.12.4.js"></script>
@@ -167,10 +201,21 @@
         <!-- Plugin JavaScript -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="public/vendor/scrollreveal/scrollreveal.min.js"></script>
-        <script src="public/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="public/vendor/CaptionHoverEffects/js/toucheffects.js"></script>
 
         <!-- Theme JavaScript -->
         <script src="public/assets/js/creative.min.js"></script>
+
+        <!-- Google Analytics-->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63336846-2', 'auto');
+            ga('send', 'pageview');
+        </script>
 
     </body>
 </html>

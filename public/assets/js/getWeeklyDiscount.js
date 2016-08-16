@@ -12,24 +12,25 @@ var app = angular.module('App', []),
 
 app.controller('Ctrl', ['$scope', '$http', function ($scope, $http) {
     $scope.Data = [];
+    $scope.Source = source;
 
     for (val of source) {
         var service = server.concat(api.concat(val));
 
         $http.get(service, {withCredentials: true}).then(function(response){
-            console.log(response)
-                var status = response.data.status,
-                    data = response.data.data;
-                if (status != undefined || status == 'successful') {
-                    if (val == "iread") {
-                        var clearData = phpUnserialize(decodeURIComponent(data));
-                    } else {
-                        var clearData = unserialize(decodeURIComponent(data));
-                    }
+            var status = response.data.status,
+                data = response.data.data;
 
-                    $scope.Data.push(clearData);
-                    console.log($scope.Data);
+            if (status != undefined || status == 'successful') {
+                if (val == "iread") {
+                    var clearData = phpUnserialize(decodeURIComponent(data));
+                } else {
+                    var clearData = unserialize(decodeURIComponent(data));
                 }
+
+                $scope.Data.push(clearData);
+                console.log($scope.Data);
+            }
         })
     }
 }])
