@@ -68,7 +68,7 @@ class DiscountParsing
                     "price_end" => "</b>元",
                     "discount_begin" => "元</h2><h2>",
                     "discount_end" => "折",
-                    "book_link_begin" => "<a href=\"http://www.books.com.tw/products",
+                    "book_link_begin" => "<h1><a href=\"http://www.books.com.tw/products",
                     "book_link_end" => "\">",
                     "img_begin" => "img src=\"",
                     "img_end" => "/>",
