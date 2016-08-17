@@ -105,4 +105,56 @@ class BookController extends Controller
         }
         return new JsonResponse($result);
     }
+
+    /**
+     * Get raw data from redis.
+     *
+     * @Route(
+     *      "/book/discount/week/raw/{source}",
+     *      name="raw_discount_week",
+     *      requirements={"source" : "bookscom|taaze|sanmin|iread"})
+     *
+     * @Method("GET")
+     */
+    public function rawWeeklyDiscountAction(Request $request, $source)
+    {
+        try {
+            Autoloader::register();
+            $redis = new Client(getenv('REDIS_URL'));
+
+            $page = $redis->get($source);
+            if (empty($page) || is_null($page)) {
+                throw new \Exception("There is no data.", 100);
+            }
+            if (strlen($page) <= 200) {
+                throw new \Exception("Something wrong with data.", 101);
+            }
+
+            $raw = json_decode($page);
+            $raw = urldecode($raw);
+            $raw = unserialize($raw);
+
+            $result = [
+                'status' => 'successful',
+                'data' => $raw,
+            ];
+
+        } catch (\Exception $e) {
+            if ($e->getCode() == 100 || $e->getCode() == 101) {
+                $response = $this->forward(
+                    'PriceCrawlerBundle:Book:weeklyDiscountUpdate',
+                    ['source' => $source]
+                );
+                return $response;
+            }
+            $result = [
+                'status' => 'failed',
+                "error" => [
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                ]
+            ];
+        }
+        return new JsonResponse($result);
+    }
 }
