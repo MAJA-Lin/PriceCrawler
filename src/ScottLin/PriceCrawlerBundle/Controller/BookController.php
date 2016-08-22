@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Predis\Autoloader;
 use Predis\Client;
 
@@ -147,6 +150,52 @@ class BookController extends Controller
                 );
                 return $response;
             }
+            $result = [
+                'status' => 'failed',
+                "error" => [
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                ]
+            ];
+        }
+        return new JsonResponse($result);
+    }
+
+    /**
+     * Clean all data in redis.
+     *
+     * @Route("/admin/{key}/redis/clean",name="clean_redis")
+     *
+     * @Method("DELETE")
+     */
+    public function cleanRedisAction(Request $request, $key)
+    {
+        header('Access-Control-Allow-Methods: DELETE');
+
+        try {
+            $dir = __DIR__ . "/../../../../";
+            $keyFile = $dir . "key.json";
+            $serverKey = file_get_contents($keyFile);
+            $serverKey = json_decode($serverKey);
+
+            if ($serverKey->key !== $key) {
+                throw new \Exception("The key is not verified.");
+            }
+
+            $kernel = $this->get('kernel');
+            $application = new Application($kernel);
+            $application->setAutoExit(false);
+            $input = new ArrayInput(['command' => 'redis:clean']);
+            $output = new NullOutput();
+            $time = date('Y-m-d, H:i:s');
+            $application->run($input, $output);
+
+            $result = [
+                'status' => 'successful',
+                'data' => 'Redis has been cleaned at ' . $time
+            ];
+
+        } catch (\Exception $e) {
             $result = [
                 'status' => 'failed',
                 "error" => [
