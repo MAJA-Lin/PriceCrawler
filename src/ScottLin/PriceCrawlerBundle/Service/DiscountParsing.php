@@ -168,7 +168,7 @@ class DiscountParsing
 
         // Books.com.tw uses Big5, add this to transfer to UTF-8
         if ($source == 'bookscom') {
-            $parsingResult['FILE'] = iconv("big5", "UTF-8", $parsingResult['FILE']);
+            $parsingResult['FILE'] = iconv("big5", "UTF-8//TRANSLIT//IGNORE", $parsingResult['FILE']);
         }
 
         $page->returnBookInfo($parsingResult['FILE'], $source);
