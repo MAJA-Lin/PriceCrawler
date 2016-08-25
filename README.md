@@ -71,3 +71,32 @@ This service now support *博客來, 讀冊, 三民 & 灰熊 iread*
         @PUT your_server/book/discount/week/{source}
 
 Fetch the latest discount info (每日66折資訊) and save it into redis.
+
+
+
+
+***
+
+PriceCrawler是一個專門爬取台灣網路書店每周特價資訊的服務.
+
+你可以直接點擊 [DEMO](http://maja-lin.github.io/PriceCrawler/WeeklyDiscount.html) 觀看本周的66折特賣書籍, 或是使用API服務直接取得資料.
+
+後端架設在heroku上面, 而前端則是採用了Github的gh-pages服務, 達成前後端分離.
+
+如果DEMO頁出現錯誤時, 你也可以直接存取
+
+        @GET https://safe-shelf-6136.herokuapp.com/book/discount/week/raw/{source}
+
+來取得特價資訊.
+
+目前支援的書店有:
+
+
+    1. bookscom
+    2. taaze
+    3. sanmin
+    4. iread
+
+依序是博客來、讀冊、三民以及灰熊.
+
+另外, 後端heroku伺服器設定每一個小時就會刷新資料, 如果有特價資訊不正確的地方請等待伺服器資料更新, 或是使用github的issue功能通知我.
