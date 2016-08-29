@@ -510,7 +510,7 @@ var task = (function() {
                     withCredentials: true
                 },
                 success: function(rawData) {
-                    if (storename == "iread") {
+                    if (storename == "iread" || storename == "taaze") {
                         var clearData = phpUnserialize(decodeURIComponent(rawData.data));
                     } else {
                         var clearData = unserialize(decodeURIComponent(rawData.data));
