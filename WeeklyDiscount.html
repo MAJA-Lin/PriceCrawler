@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,9 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- jQuery -->
+        <script src="public/vendor/jquery/jquery.min-1.12.4.js"></script>
 
         <!-- Custom Fonts -->
         <link rel="stylesheet" href="public/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
@@ -41,11 +44,10 @@
         <link href="public/assets/css/pace-theme-loading-bar.css" rel="stylesheet" />
 
         <!-- Loading data -->
-        <script src="public/assets/js/angular.min.js" ></script>
         <script src="public/assets/js/getWeeklyDiscount_browserify.js"></script>
 
     </head>
-    <body id="page-top" ng-controller="Ctrl">
+    <body id="page-top">
 
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -86,64 +88,7 @@
 
         <section class="no-padding bg-third" id="discount">
             <div class="container demo-1">
-                <ul class="grid cs-style-1" ng-repeat="data in Data[0]">
-                    <li class="col-lg-3 col-sm-6">
-                        <figure>
-                            <img src="{{data.img}}" alt="" width="240" height="360">
-                            <figcaption>
-                                <h3>{{data.date}}</h3>
-                                <span>{{data.bookName}} <br>
-                                特價: {{data.price}} 元<br>
-                                折數: {{data.discount}} 折<br>
-                                </span>
-                                <a href="{{data.link}}" target="_blank">Go</a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-                <ul class="grid cs-style-4" ng-repeat="data in Data[1]">
-                    <li class="col-lg-3 col-sm-6">
-                        <figure><img src="{{data.img}}" alt="" width="240" height="360">
-                                <figcaption>
-                                    <h3>{{data.date}}</h3>
-                                    <span>{{data.bookName}} <br>
-                                    特價: {{data.price}} 元<br>
-                                    折數: {{data.discount}} 折<br>
-                                    </span>
-                                    <a href="{{data.link}}" target="_blank">Go</a>
-                                </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-                <ul class="grid cs-style-1" ng-repeat="data in Data[2]">
-                    <li class="col-lg-3 col-sm-6">
-                        <figure>
-                            <img src="{{data.img}}" alt="" width="240" height="360">
-                            <figcaption>
-                                <h3>{{data.date}}</h3>
-                                <span>{{data.bookName}} <br>
-                                特價: {{data.price}} 元<br>
-                                折數: {{data.discount}} 折<br>
-                                </span>
-                                <a href="{{data.link}}" target="_blank">Go</a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-                <ul class="grid cs-style-1" ng-repeat="data in Data[3]">
-                    <li class="col-lg-3 col-sm-6">
-                        <figure>
-                            <img src="{{data.img}}" alt="" width="240" height="360">
-                            <figcaption>
-                                <h3>{{data.date}}</h3>
-                                <span>{{data.bookName}} <br>
-                                特價: {{data.price}} 元<br>
-                                折數: {{data.discount}} 折<br>
-                                </span>
-                                <a href="{{data.link}}" target="_blank">Go</a>
-                            </figcaption>
-                        </figure>
-                    </li>
+                <ul class="grid cs-style-1">
                 </ul>
             </div>
         </section>
@@ -191,14 +136,11 @@
             </div>
         </section>
 
-        <!-- jQuery -->
-        <script src="public/vendor/jquery/jquery.min-1.12.4.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="public/vendor/bootstrap/js/bootstrap.min.js"></script>
         <!-- Plugin JavaScript -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
         <script src="public/vendor/scrollreveal/scrollreveal.min.js"></script>
-        <script src="public/vendor/CaptionHoverEffects/js/toucheffects.js"></script>
 
         <!-- Theme JavaScript -->
         <script src="public/assets/js/creative.min.js"></script>
