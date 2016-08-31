@@ -11,12 +11,12 @@ use Predis\Client;
 
 date_default_timezone_set("Asia/Taipei");
 
-class RedisCleanCommand extends ContainerAwareCommand
+class RedisClearCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
-        $this->setName('redis:clean')
-            ->setDescription('Clean all the data in redis.');
+        $this->setName('redis:clear')
+            ->setDescription('Clear all the data in redis.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
