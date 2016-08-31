@@ -36,11 +36,12 @@ class DiscountParsing
 
     /**
      * Parse the discount data,
-     *      and return it as a string that has been urlencode/serialize.
-     * 抓取資料並作urlencode/serialize再回傳.
+     *      and return it as an array that contains all books data and today's special.
+     *      Encode them with urlencode/serialize, and return both data as an array.
+     * 抓取資料, 並另外找出本日特價, 再作urlencode/serialize回傳.
      *
      *
-     * @return string $finalPage
+     * @return array
      */
     public function bookParsing()
     {
@@ -172,8 +173,26 @@ class DiscountParsing
         }
 
         $page->returnBookInfo($parsingResult['FILE'], $source);
-        $finalPage = urlencode(serialize($page->getBookInfo()));
-        return $finalPage;
-    }
+        $finalPage = $page->getBookInfo();
+        $weekBook = urlencode(serialize($finalPage));
 
+        //Today's discount
+        $today = date('m\/d');
+        foreach ($finalPage as $key => $value) {
+            if ($value['date'] == $today) {
+                $todaySpecial = urlencode(serialize($value));
+            }
+        }
+
+        if (empty($todaySpecial) || is_null($todaySpecial)) {
+            $todaySpecial = 'empty';
+        }
+
+        $bookResult = [
+            'weekBook' => $weekBook,
+            'today' => $todaySpecial
+        ];
+
+        return $bookResult;
+    }
 }

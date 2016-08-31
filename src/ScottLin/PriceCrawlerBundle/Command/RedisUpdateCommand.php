@@ -21,6 +21,7 @@ class RedisUpdateCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $today = 'today';
         $dir = __DIR__ . "/../Logs/";
         $errLogFile = $dir . date('Y-m-d') . "_error.log";
         $logFile = $dir . date('Y-m-d') . ".log";
@@ -45,8 +46,11 @@ class RedisUpdateCommand extends ContainerAwareCommand
 
             foreach ($source as $key) {
                 $discountParsing->setSource($key);
-                $finalPage = $discountParsing->bookParsing();
-                $redis->set($key, json_encode($finalPage));
+                $bookResult = $discountParsing->bookParsing();
+                $redis->set($key, json_encode($bookResult['weekBook']));
+                $redis->hmset($today, [
+                    $key => json_encode($bookResult['today'])
+                ]);
 
                 $time = date('Y-m-d, H:i:s');
                 $log = $time . " [Code:002] (Source: " . $key;

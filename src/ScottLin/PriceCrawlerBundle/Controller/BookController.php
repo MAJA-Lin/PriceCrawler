@@ -29,19 +29,21 @@ class BookController extends Controller
     public function weeklyDiscountUpdateAction(Request $request, $source)
     {
         try {
-
             Autoloader::register();
             $redis = new Client(getenv('REDIS_URL'));
 
             $discountParsing = $this->get('scottlin_pricecrawler.discountparsing');
             $discountParsing->setSource($source);
-            $finalPage = $discountParsing->bookParsing();
+            $bookResult = $discountParsing->bookParsing();
 
-            $redis->set($source, json_encode($finalPage));
+            $redis->set($source, json_encode($bookResult['weekBook']));
+            $redis->hmset('today', [
+                $source => json_encode($bookResult['today'])
+            ]);
 
             $result = [
                 'status' => 'successful',
-                'data' => $finalPage,
+                'data' => $bookResult['weekBook'],
             ];
 
         } catch (\Exception $e) {
@@ -196,6 +198,66 @@ class BookController extends Controller
             ];
 
         } catch (\Exception $e) {
+            $result = [
+                'status' => 'failed',
+                "error" => [
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                ]
+            ];
+        }
+        return new JsonResponse($result);
+    }
+
+    /**
+     * Get today's discount information
+     *
+     * @Route("/book/discount/today", name="discount_today")
+     *
+     * @Method("GET")
+     */
+    public function todayDiscountAction(Request $request)
+    {
+        try {
+            Autoloader::register();
+            $redis = new Client(getenv('REDIS_URL'));
+
+            $today = $redis->hgetall('today');
+
+            if (empty($today) || is_null($today)) {
+                throw new \Exception("There is no data.", 100);
+            }
+
+            $today_decode = [];
+            foreach ($today as $key => $value) {
+                $value = json_decode($value);
+                if ($value != 'empty') {
+                    $raw = unserialize(urldecode($value));
+                }
+                if ($value == 'empty') {
+                    $raw = 'empty';
+                }
+                $today_decode[$key] = $raw;
+            }
+            $todayResult = urlencode(serialize($today_decode));
+
+            if (strlen($todayResult) <= 100) {
+                throw new \Exception("Something wrong with data : today's discount", 102);
+            }
+
+            $result = [
+                'status' => 'successful',
+                'data' => $todayResult,
+            ];
+
+        } catch (\Exception $e) {
+            if ($e->getCode() == 100 || $e->getCode() == 101) {
+                $response = $this->forward(
+                    'PriceCrawlerBundle:Book:weeklyDiscountUpdate',
+                    ['source' => $source]
+                );
+                return $response;
+            }
             $result = [
                 'status' => 'failed',
                 "error" => [
