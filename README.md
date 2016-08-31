@@ -67,7 +67,6 @@ This service now support *博客來, 讀冊, 三民 & 灰熊 iread*
 
 
 
-=======
 
 And the response will be like:
 
