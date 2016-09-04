@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c83062e91dddd58c87b16ad5628004c2",
-    "content-hash": "7dc7ab8828fcb7add87ddd528f90b0eb",
+    "hash": "14054bed11aaffe34c755660c5ebdaa0",
+    "content-hash": "65d49d7337f7c556e75cf7b03fc1d6e2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -951,6 +951,42 @@
                 "minification"
             ],
             "time": "2015-11-12 13:51:40"
+        },
+        {
+            "name": "majalin/php-webbot",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MAJA-Lin/WebbotBundle.git",
+                "reference": "7c94e636b7a8182841cab3e5a0b6d8a8095811e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MAJA-Lin/WebbotBundle/zipball/7c94e636b7a8182841cab3e5a0b6d8a8095811e7",
+                "reference": "7c94e636b7a8182841cab3e5a0b6d8a8095811e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MajaLin\\Webbot\\": "packages/MajaLin/Webbot/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Scott Lin",
+                    "email": "typhoon31815@gmail.com"
+                }
+            ],
+            "description": "This project is based on Michael Schrenk's WebbotsSpidersScreenScraper Library REV 2.0, and I just modify to use it on composer",
+            "time": "2016-09-04 06:21:30"
         },
         {
             "name": "monolog/monolog",

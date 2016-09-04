@@ -2,8 +2,8 @@
 
 namespace ScottLin\PriceCrawlerBundle\Library;
 
-use MichaelSchrenk\WebbotBundle\Library\Parse;
-use MichaelSchrenk\WebbotBundle\Library\Http;
+use MajaLin\Webbot\Parse;
+use MajaLin\Webbot\Http;
 
 /**
  *

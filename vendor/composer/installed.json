@@ -2205,5 +2205,43 @@
             "mail",
             "mailer"
         ]
+    },
+    {
+        "name": "majalin/php-webbot",
+        "version": "v1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MAJA-Lin/WebbotBundle.git",
+            "reference": "7c94e636b7a8182841cab3e5a0b6d8a8095811e7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MAJA-Lin/WebbotBundle/zipball/7c94e636b7a8182841cab3e5a0b6d8a8095811e7",
+            "reference": "7c94e636b7a8182841cab3e5a0b6d8a8095811e7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "time": "2016-09-04 06:21:30",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "MajaLin\\Webbot\\": "packages/MajaLin/Webbot/src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Scott Lin",
+                "email": "typhoon31815@gmail.com"
+            }
+        ],
+        "description": "This project is based on Michael Schrenk's WebbotsSpidersScreenScraper Library REV 2.0, and I just modify to use it on composer"
     }
 ]
