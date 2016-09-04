@@ -2,8 +2,6 @@
 
 namespace ScottLin\PriceCrawlerBundle\Service;
 
-use MichaelSchrenk\WebbotBundle\Library\Parse;
-use MichaelSchrenk\WebbotBundle\Library\Http;
 use ScottLin\PriceCrawlerBundle\Library\WeekDiscount;
 
 class DiscountParsing
@@ -45,7 +43,6 @@ class DiscountParsing
      */
     public function bookParsing()
     {
-        $parse = new Parse;
         $source = $this->getSource();
 
         $ref = "www.google.com.tw";
