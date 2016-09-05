@@ -53,7 +53,7 @@ class RedisUpdateCommand extends ContainerAwareCommand
                 ]);
 
                 $time = date('Y-m-d, H:i:s');
-                $log = $time . " [Code:002] (Source: " . $key;
+                $log = $time . " [Code:011] (Source: " . $key;
                 $log = $log . ") Data successfully parsed and saved into redis." . PHP_EOL;
 
                 $handle = fopen($logFile, "a+");
