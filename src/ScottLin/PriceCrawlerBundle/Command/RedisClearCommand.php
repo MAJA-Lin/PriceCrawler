@@ -16,11 +16,14 @@ class RedisClearCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this->setName('redis:clear')
-            ->setDescription('Clear all the data in redis.');
+            ->addArgument('range', InputArgument::OPTIONAL, 'Which data you want to flush?')
+            ->setDescription('Clear the data in redis.')
+            ->setHelp("This command allows you to clear data on redis");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $source = ["bookscom", "taaze", "sanmin", "iread"];
         $dir = __DIR__ . "/../Logs/";
         $errLogFile = $dir . date('Y-m-d') . "_error.log";
         $logFile = $dir . date('Y-m-d') . ".log";
@@ -33,9 +36,36 @@ class RedisClearCommand extends ContainerAwareCommand
             Autoloader::register();
             $redis = new Client(getenv('REDIS_URL'));
 
+            $range = $input->getArgument('range');
+            if (is_null($range) || ($range != 'all' && $range != 'books' && $range != 'update')) {
+                $range = 'books';
+            }
+
             $time = date('Y-m-d, H:i:s');
-            $redis->flushall();
-            $log = $time . " [Code:001] Redis - flushall." . PHP_EOL;
+
+            if ($range == 'all') {
+                $redis->flushall();
+                $log = $time . " [Code:001] Redis - flushall." . PHP_EOL;
+            }
+
+            if ($range == 'books') {
+                foreach ($source as $key => $value) {
+                    $redis->del($value);
+                    $bookLog = " [Code:002] Redis - delete books data. (source: " . $value . " )";
+                    if ($key == 0) {
+                        $log = $time . $bookLog . PHP_EOL;
+                    }
+                    if ($key > 0) {
+                        $log = $log . $time . $bookLog . PHP_EOL;
+                    }
+                }
+            }
+
+            if ($range == 'update') {
+                $redis->del('update');
+                $log = $time . " [Code:003] Redis - delete counter that record when books update." . PHP_EOL;
+            }
+
             $handle = fopen($logFile, "a+");
             fwrite($handle, $log);
             fclose($handle);

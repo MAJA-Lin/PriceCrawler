@@ -164,13 +164,13 @@ class BookController extends Controller
     }
 
     /**
-     * Clean all data in redis.
+     * clear all data in redis.
      *
-     * @Route("/admin/{key}/redis/clean",name="clean_redis")
+     * @Route("/admin/{key}/redis/clear",name="clear_redis")
      *
      * @Method("DELETE")
      */
-    public function cleanRedisAction(Request $request, $key)
+    public function clearRedisAction(Request $request, $key)
     {
         header('Access-Control-Allow-Methods: DELETE');
 
@@ -187,14 +187,14 @@ class BookController extends Controller
             $kernel = $this->get('kernel');
             $application = new Application($kernel);
             $application->setAutoExit(false);
-            $input = new ArrayInput(['command' => 'redis:clean']);
+            $input = new ArrayInput(['command' => 'redis:clear']);
             $output = new NullOutput();
             $time = date('Y-m-d, H:i:s');
             $application->run($input, $output);
 
             $result = [
                 'status' => 'successful',
-                'data' => 'Redis has been cleaned at ' . $time
+                'data' => 'Redis has been cleared at ' . $time
             ];
 
         } catch (\Exception $e) {
